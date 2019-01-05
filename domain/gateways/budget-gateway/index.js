@@ -9,6 +9,6 @@ export const createBudgetGateway = ({
     create: ({ budget }) => create(budget),
     removeById: ({ id }) => removeById(id),
     addGroup: ({ id, group }) => addGroup(id, group),
-    editTitle: ({ id, title }) => editTitle(id, title),
+    editTitle: ({ id, budget }) => editTitle(id, budget),
     getAll: () => getAll()
 })
