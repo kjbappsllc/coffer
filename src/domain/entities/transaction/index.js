@@ -2,9 +2,11 @@
 export const buildTransactionObj = ({
     date,
     amount,
-    fund
+    fund,
+    id
 }) => ({
     date,
     amount,
-    fund
+    fund,
+    id
 })
