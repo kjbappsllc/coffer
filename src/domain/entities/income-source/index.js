@@ -9,13 +9,15 @@ export const payPeriodTypes = Object.freeze({
 export const buildIncomeSourceObj = ({ validate }) => ({
     label,
     amount,
+    id,
     isManual = true,
     payPeriodType = null,
     nextPayDate = null
 }) => validate({
     incomeSource: { 
         label, 
-        amount, 
+        amount,
+        id, 
         isManual, 
         payPeriodType, 
         nextPayDate 

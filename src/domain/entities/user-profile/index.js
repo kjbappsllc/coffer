@@ -1,10 +1,12 @@
 
 export const buildUserProfileObj = ({
     name,
-    balance,
+    balance = 0,
+    pastLocations = [],
     incomeSources = []
 }) => ({
     name,
     balance,
-    incomeSources
+    incomeSources,
+    pastLocations
 })

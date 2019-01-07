@@ -4,7 +4,7 @@ export const buildFundObj =({
     id,
     allocAmount,
     isRecurrent,
-    balance
+    balance = 0
 }) => ({
     label,
     id,

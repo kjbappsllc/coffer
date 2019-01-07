@@ -4,14 +4,18 @@ export const budgetTypes = Object.freeze({
     TRADITIONAL: 'traditional'
 })
 
-export const buildBudgetObj = ({
+export const buildBudgetObj = ({ validate }) => ({
     title,
     type,
     id,
     groups = []
-}) => ({
-    title,
-    type,
-    funds,
-    id
+}) => validate({
+    budget: {
+        title,
+        type,
+        groups,
+        id,
+        $$type: 'budget'
+    },
+    budgetTypes
 })
