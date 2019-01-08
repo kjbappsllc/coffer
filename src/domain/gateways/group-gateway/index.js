@@ -10,5 +10,5 @@ export const createGroupGateway = ({
     removeById: ({ id }) => removeById(id),
     getAll: () => getAll(),
     addFund: ({ id, fund }) => addFund(id, fund),
-    edit: ({ id, group }) => edit(id, group)
+    edit: ({ id, newGroup }) => edit(id, newGroup)
 })
