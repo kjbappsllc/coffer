@@ -1,12 +1,12 @@
 import { isDate } from 'lodash'
-import { validateIncomeSource } from "./income-source-rules";
-import { validateBudget } from './budget-rules'
-import { validateTransaction } from './transaction-rules'
-import { validateFund } from './fund-rules'
-import { validateGroup } from './group-rules'
-import { validateUserProfile } from './user-profile-rules'
+import { validateIncomeSource } from "./income-source";
+import { validateBudget } from './budget'
+import { validateTransaction as validateT } from './transaction'
+import { validateFund } from './fund'
+import { validateGroup } from './group'
+import { validateUserProfile } from './user-profile'
 
-const validateTransaction = validateTransaction({ isDate })
+const validateTransaction = validateT({ isDate })
 
 export {
     validateIncomeSource,
