@@ -1,10 +1,13 @@
 
-export const buildGroupObj = ({
+export const buildGroupObj = ({ validate }) => ({
     label,
     id,
     funds = []
-}) => ({
-    label,
-    funds,
-    id
+}) => validate({ 
+    group: {
+        label,
+        funds,
+        id,
+        $$type: 'group'
+    }
 })

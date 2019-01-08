@@ -1,12 +1,15 @@
 
-export const buildUserProfileObj = ({
+export const buildUserProfileObj = ({ validate }) => ({
     name,
     balance = 0,
     pastLocations = [],
     incomeSources = []
-}) => ({
-    name,
-    balance,
-    incomeSources,
-    pastLocations
+}) => validate({ 
+    userProfile: {
+        name,
+        balance,
+        incomeSources,
+        pastLocations,
+        $$type: 'userProfile'
+    }
 })

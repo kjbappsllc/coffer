@@ -20,7 +20,8 @@ export const buildIncomeSourceObj = ({ validate }) => ({
         id, 
         isManual, 
         payPeriodType, 
-        nextPayDate 
+        nextPayDate,
+        $$type: 'incomeSource' 
     },
     payPeriodTypes
 })
