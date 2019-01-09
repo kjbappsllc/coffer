@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "babel ./src --out-dir ./dist"
+    "build": "babel ./src --out-dir ./dist",
+    "test": "mocha --require @babel/register ./**/*.test.js"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +14,7 @@
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
+    "@babel/register": "^7.0.0",
     "chai": "^4.2.0",
     "mocha": "^5.2.0"
   },
