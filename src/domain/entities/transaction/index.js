@@ -1,17 +1,21 @@
 
-export const buildTransactionObj = ({ validate }) => ({
-    date,
-    amount,
-    fund,
-    location,
-    id
-}) => validate({
+export const createTransactionEntity = ({ validate }) => ({
     transaction: {
-        date,
-        amount,
-        fund,
-        location,
-        id,
-        $$type: 'transaction'
+        init: ({
+            date,
+            amount,
+            fund,
+            location,
+            id
+        }) => validate({
+            transaction: {
+                date,
+                amount,
+                fund,
+                location,
+                id,
+                $$type: 'transaction'
+            }
+        })
     }
 })

@@ -1,20 +1,20 @@
-import { buildTransactionObj } from "."
+import { createTransactionEntity } from "."
 import { expect } from 'chai'
 
 
 describe("DOMAIN:ENTITY:transaction", () => {
     const validate = ({ transaction: t }) => t
-    const createTransaction = buildTransactionObj({ validate })
+    const { transaction: transactionE } = createTransactionEntity({ validate })
 
-    it('Should return user profile object with correct default values and keys', (done) => {
-        const transaction = createTransaction({})
+    it('Should return transaction object with correct default values and keys', (done) => {
+        const transaction = transactionE.init({})
         expect(transaction.$$type).to.be.equal('transaction')
         done()
     })
 
-    it('Should return user profile object with correct keys when passed in', (done) => {
+    it('Should return transaction object with correct keys when passed in', (done) => {
         const date = new Date()
-        const transaction = createTransaction({ 
+        const transaction = transactionE.init({ 
             date,
             amount: 1000,
             fund: 'Test',

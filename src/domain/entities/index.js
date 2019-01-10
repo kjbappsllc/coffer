@@ -1,9 +1,9 @@
-import { buildIncomeSourceObj, payPeriodTypes } from "./income-source"
-import { buildBudgetObj, budgetTypes } from "./budget"
-import { buildFundObj } from "./fund"
-import { buildTransactionObj } from "./transaction"
-import { buildGroupObj } from './group'
-import { buildUserProfileObj } from "./user-profile"
+import { createIncomeSourceEntity } from "./income-source"
+import { createBudgetEntity } from "./budget"
+import { createFundEntity } from "./fund"
+import { createTransactionEntity } from "./transaction"
+import { createGroupEntity } from './group'
+import { createUserProfileEntity } from "./user-profile"
 import { 
     validateIncomeSource, 
     validateBudget, 
@@ -12,12 +12,12 @@ import {
     validateGroup,
     validateUserProfile } from "../rules"
 
-const incomeSource = { init: buildIncomeSourceObj({ validate: validateIncomeSource }), payPeriodTypes }
-const budget = { init: buildBudgetObj({ validate: validateBudget }), budgetTypes }
-const transaction = { init: buildTransactionObj({ validate: validateTransaction }) }
-const fund = { init: buildFundObj({ validate: validateFund }) }
-const group = { init: buildGroupObj({ validate: validateGroup }) }
-const userProfile = { init: buildUserProfileObj({ validate: validateUserProfile }) }
+const { incomeSource } = createIncomeSourceEntity({ validate: validateIncomeSource })
+const { budget } = createBudgetEntity({ validate: validateBudget })
+const { transaction } = createTransactionEntity({ validate: validateTransaction })
+const { fund } = createFundEntity({ validate: validateFund })
+const { group } = createGroupEntity({ validate: validateGroup })
+const { userProfile } = createUserProfileEntity({ validate: validateUserProfile })
 
 export {
     incomeSource,

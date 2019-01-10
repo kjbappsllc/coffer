@@ -1,13 +1,17 @@
 
-export const buildGroupObj = ({ validate }) => ({
-    label,
-    id,
-    funds = []
-}) => validate({ 
+export const createGroupEntity = ({ validate }) => ({
     group: {
-        label,
-        funds,
-        id,
-        $$type: 'group'
+        init: ({
+            label,
+            id,
+            funds = []
+        }) => validate({
+            group: {
+                label,
+                funds,
+                id,
+                $$type: 'group'
+            }
+        })
     }
 })

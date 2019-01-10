@@ -1,21 +1,26 @@
 
-export const budgetTypes = Object.freeze({
+const budgetTypes = Object.freeze({
     HOARDER: 'hoarder',
     TRADITIONAL: 'traditional'
 })
 
-export const buildBudgetObj = ({ validate }) => ({
-    title,
-    type,
-    id,
-    groups = []
-}) => validate({
+export const createBudgetEntity = ({ validate }) => ({
     budget: {
-        title,
-        type,
-        groups,
-        id,
-        $$type: 'budget'
-    },
-    budgetTypes
+        init: ({
+            title,
+            budgetType,
+            id,
+            groups = []
+        }) => validate({
+            budget: {
+                title,
+                budgetType,
+                groups,
+                id,
+                $$type: 'budget'
+            },
+            budgetTypes
+        }),
+        budgetTypes
+    }
 })
