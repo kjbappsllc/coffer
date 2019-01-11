@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "babel ./src/*/src/ --out-dir ./dist",
+    "build": "babel ./src --out-dir ./dist",
     "test": "mocha --require @babel/register ./**/*.test.js"
   },
   "keywords": [],
@@ -18,5 +18,7 @@
     "chai": "^4.2.0",
     "mocha": "^5.2.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "nedb": "^1.8.0"
+  }
 }

@@ -1,11 +1,11 @@
-import { createBudgetGateway } from './budget'
+import { createIBudgetGateway } from './budget'
 import { createFundGateway } from './fund'
 import { createGroupGateway } from './group'
 import { createTransactionGateway } from './transaction'
 import { createUserProfileGateway } from './user-profile'
 import { createIncomeSourceGateway } from './income-source'
 
-const budgetGateway = { create: createBudgetGateway }
+const { ibudgetGateway } =  createIBudgetGateway()
 const fundGateway = { create: createFundGateway }
 const groupGateway = { create: createGroupGateway }
 const transactionGateway = { create: createTransactionGateway }
@@ -13,7 +13,7 @@ const userProfileGateway = { create: createUserProfileGateway }
 const incomeSourceGateway = { create: createIncomeSourceGateway }
 
 export {
-    budgetGateway,
+    ibudgetGateway,
     fundGateway,
     groupGateway,
     transactionGateway,
