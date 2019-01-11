@@ -2,13 +2,13 @@
 import fs from 'fs'
 import nedb from 'nedb'
 //adapters and implementations
-import { createDbDriverAdaptor } from './adaptor'
+import { createDbDriverAdapter } from './adapter'
 import { nedbDriver } from './implementations'
 
-const { dbDriverAdaptor } = createDbDriverAdaptor()
+const { dbDriverAdapter } = createDbDriverAdapter()
 
 export const createDbDriver = () => nedbDriver({
-    dbDriverAdaptor,
+    dbDriverAdapter,
     nedb,
     fs
 })

@@ -3,12 +3,12 @@ import { createInsertFn } from './insert'
 import { createUpdateFn } from './update'
 
 export const nedbDriver = ({
-    dbDriverAdaptor,
+    dbDriverAdapter,
     nedb: Database,
     fs
 }) => {
     let db = {}
-    return dbDriverAdaptor.adapt({
+    return dbDriverAdapter.adapt({
         connect: ({ urls }) => {
             return createConnectFn({ fs })({ urls, db, nedb: Database })
         },
