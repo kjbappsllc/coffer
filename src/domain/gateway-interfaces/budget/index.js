@@ -13,7 +13,7 @@ export const createIBudgetGateway = () => ({
             addGroup: ({ id, group }) => addGroup(id, group),
             editTitle: ({ id, budget }) => editTitle(id, budget),
             getAll: () => getAll(),
-            $$type: 'budgetGateway'
+            $$type: 'ibudgetGateway'
         })
     }
 })
