@@ -12,11 +12,7 @@ export const createUpdateFn = ({
         return new Promise((resolve, reject) => {
             const currDb = db[collection]
             currDb.update(query, updateObj, { multi: false }, (err) => {
-                if (err) {
-                    reject(err)
-                } else {
-                    resolve()
-                }
+                err ? reject(err) : resolve()
             })
         })
 
