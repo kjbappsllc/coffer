@@ -1,6 +1,6 @@
 
 const throwNotImplementedErr = ({ name }) => {
-    throw new Error(`${method} function is not implemented in dbDriverAdapter`)
+    throw new Error(`${method} function is not implemented in dbDriver`)
 }
 
 export const createDbDriverAdaptor = () => ({

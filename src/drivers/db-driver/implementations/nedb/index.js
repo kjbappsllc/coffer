@@ -10,16 +10,13 @@ export const nedbDriver = ({
     let db = {}
     return dbDriverAdaptor.adapt({
         connect: ({ urls }) => {
-            const connectFn = createConnectFn({ fs })
-            return connectFn({ urls, db, nedb: Database })
+            return createConnectFn({ fs })({ urls, db, nedb: Database })
         },
         insert: ({ collection, doc }) => {
-            const insertFn = createInsertFn({ db })
-            return insertFn({ collection, doc })
+            return createInsertFn({ db })({ collection, doc })
         },
         update: ({ collection, query, updateObj }) => {
-            const updateFn = createUpdateFn({ db })
-            return updateFn({ collection, query, updateObj })
+            return createUpdateFn({ db })({ collection, query, updateObj })
         }
     })
 }
