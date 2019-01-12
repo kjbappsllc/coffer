@@ -1,6 +1,6 @@
 
 export const createIBudgetGateway = () => ({
-    ibudgetGateway: {
+    iBudgetGateway: {
         implement: ({
             create,
             removeById,
@@ -13,7 +13,7 @@ export const createIBudgetGateway = () => ({
             addGroup: ({ id, group }) => addGroup(id, group),
             editTitle: ({ id, budget }) => editTitle(id, budget),
             getAll: () => getAll(),
-            $$type: 'ibudgetGateway'
+            $$type: 'iBudgetGateway'
         })
     }
 })
