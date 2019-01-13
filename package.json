@@ -1,13 +1,15 @@
 {
   "name": "coffer",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "bin": "./src/interfaces/cli/index.js",
   "scripts": {
     "build": "babel ./src --out-dir ./dist",
     "test": "mocha --require @babel/register ./**/*.test.js",
-    "deploy": "npm patch && npm install -g ."
+    "deploy:patch": "npm version patch && npm install -g .",
+    "deploy:minor": "npm version minor && npm install -g .",
+    "deploy:major": "npm version major && npm install -g ."
   },
   "keywords": [],
   "author": "Keyshawn Butts",
