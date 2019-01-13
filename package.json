@@ -7,9 +7,9 @@
   "scripts": {
     "build": "babel ./src --out-dir ./dist",
     "test": "mocha --require @babel/register ./**/*.test.js",
-    "deploy:patch": "npm version patch && npm install -g .",
-    "deploy:minor": "npm version minor && npm install -g .",
-    "deploy:major": "npm version major && npm install -g ."
+    "dply:patch": "npm version patch && npm install -g .",
+    "dply:minor": "npm version minor && npm install -g .",
+    "dply:major": "npm version major && npm install -g ."
   },
   "keywords": [],
   "author": "Keyshawn Butts",
