@@ -1,14 +1,17 @@
 {
   "name": "coffer",
-  "version": "1.0.0",
+  "version": "0.1",
   "description": "",
   "main": "index.js",
+  "bin": "./src/interfaces/cli/index.js",
   "scripts": {
     "build": "babel ./src --out-dir ./dist",
-    "test": "mocha --require @babel/register ./**/*.test.js"
+    "test": "mocha --require @babel/register ./**/*.test.js",
+    "deploy": "npm install -g ."
   },
   "keywords": [],
-  "author": "",
+  "author": "Keyshawn Butts",
+  "email": "kbutts314@gmail.com",
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.2.3",
