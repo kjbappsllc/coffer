@@ -1,7 +1,7 @@
 import { budget } from '../../../domain/entities'
 
 export const createAddBudgetUseCase = ({
-    budgetGateway
+    iBudgetGateway
 }) => ({
     addBudget: {
         execute: ({ title,
@@ -9,7 +9,7 @@ export const createAddBudgetUseCase = ({
             id,
             groups = []
         }) => {
-            if(budgetGateway.$$type !== 'iBudgetGateway') {
+            if(iBudgetGateway.$$type !== 'iBudgetGateway') {
                 return Promise.reject("Error: addBudget requires type of iBudgetGateway")
             }
             try {
