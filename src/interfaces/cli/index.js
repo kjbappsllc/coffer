@@ -21,7 +21,12 @@ isCofferSetup({ hostsPath, fs })
             // Continue Here
             console.log(`You are not setup with ${orange('coffer')}!`)
             console.log(`Setting ${green('you')} up ...`)
-            return setupApplication({ exec, hostsScript: fileOwnershipScript,  yellow, permissionsScriptFn  })
+            return setupApplication({
+                exec,
+                hostsScript: fileOwnershipScript,
+                yellow,
+                permissionsScriptFn
+            })
         } else {
             console.log(`You are already setup with ${orange('coffer')}!`)
             console.log(`Vist ${orange('coffer.co')} in your browser for the application.`)

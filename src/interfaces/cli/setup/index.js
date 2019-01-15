@@ -21,6 +21,7 @@ export const setupApplication = ({
                     const permissionsScript = permissionsScriptFn({ username })
                     return setPermissions({ exec, permissionsScript })
                 }).then((output) => {
+                    //Append the mapping here
                     console.log(output)
                 }).catch(err => {
                     reject(err)
