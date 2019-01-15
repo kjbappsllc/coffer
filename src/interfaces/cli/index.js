@@ -4,36 +4,43 @@ import chalk from 'chalk'
 import { exec } from 'child_process'
 import path from 'path'
 
-import { getHostsPath, getCliColors, getFileOwnershipScript, getPermissionsScriptFn } from "./utils";
-import { isCofferSetup } from './pre-setup'
-import { setupApplication } from './setup'
+import { getHostsPath, getCliColors, getFileOwnershipScript, getPermissionsScriptFn, getPortProxyScript } from "./utils";
+import { isCofferSetup, setupHostsConfig, setUpPortProxy } from './setup'
 
 const platform = process.platform
+const hostsEntry = '127.3.3.3   coffer.co'
 const { orange, yellow, green } = getCliColors({ chalk })
 const hostsPath = path.relative('.', getHostsPath({ platform }))
 const fileOwnershipScript = getFileOwnershipScript({ platform, hostsPath })
 const permissionsScriptFn = getPermissionsScriptFn({ platform, hostsPath })
+const portProxyScript = getPortProxyScript({ platform })
 
 console.log(`\nCurrent environment: ${yellow(platform)}`)
-isCofferSetup({ hostsPath, fs })
+isCofferSetup({ hostsPath, fs, hostsEntry })
     .then((isSetup) => {
         if (!isSetup) {
-            // Continue Here
             console.log(`You are not setup with ${orange('coffer')}!`)
             console.log(`Setting ${green('you')} up ...`)
-            return setupApplication({
+            return setupHostsConfig({
                 exec,
+                fs,
                 hostsScript: fileOwnershipScript,
                 yellow,
-                permissionsScriptFn
+                permissionsScriptFn,
+                hostsPath,
+                hostsEntry
             })
         } else {
-            console.log(`You are already setup with ${orange('coffer')}!`)
-            console.log(`Vist ${orange('coffer.co')} in your browser for the application.`)
+            console.log(`You are already setup with ${orange('coffer')}.`)
+            console.log(`Vist ${orange('coffer.co')} in your browser for the application!`)
             process.exit(0)
         }
-    }).then((text) => {
-        console.log('')
+    }).then((successMsg) => {
+        console.log(successMsg)
+        return setUpPortProxy({ portProxyScript, exec })
+    }).then((msg) => {
+        console.log(msg)
+        console.log(`Vist ${orange('coffer.co')} in your browser for the application!`)
     }).catch(err => {
         console.log(err)
     })
