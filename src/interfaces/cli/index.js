@@ -10,7 +10,7 @@ import { isCofferSetup, setupHostsConfig, setUpPortProxy } from './setup'
 const platform = process.platform
 const hostsEntry = '127.3.3.3   coffer.co'
 const { orange, yellow, green } = getCliColors({ chalk })
-const hostsPath = path.relative('.', getHostsPath({ platform }))
+const hostsPath = getHostsPath({ platform, path })
 const fileOwnershipScript = getFileOwnershipScript({ platform, hostsPath })
 const permissionsScriptFn = getPermissionsScriptFn({ platform, hostsPath })
 const portProxyScript = getPortProxyScript({ platform })
