@@ -6,7 +6,7 @@
     "github": "https://github.com/kjbappsllc/coffer"
   },
   "main": "index.js",
-  "bin": "./dist/interfaces/cli/index.js",
+  "bin": "./dist/external-interfaces/cli/index.js",
   "scripts": {
     "build": "babel ./src --out-dir ./dist",
     "test": "mocha --require @babel/register ./src/**/*.test.js",
