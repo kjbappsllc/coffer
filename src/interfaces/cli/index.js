@@ -4,7 +4,7 @@ import chalk from 'chalk'
 import { exec } from 'child_process'
 import path from 'path'
 
-import { getHostsPath, getCliColors, getFileOwnershipScript, getPermissionsScriptFn, getPortProxyScript, getPortProxyScripts } from "./utils";
+import { getHostsPath, getCliColors, getFileOwnershipScripts, getPermissionsScriptsFn, getPortProxyScripts } from "./utils";
 import { isCofferSetup, setupHostsConfig, setUpPortProxy } from './setup'
 
 const platform = process.platform
@@ -24,7 +24,7 @@ isCofferSetup({ hostsPath, fs, hostsEntry })
             return setupHostsConfig({
                 exec,
                 fs,
-                hostsScript: fileOwnershipScript.create,
+                hostsScript: fileOwnershipScript.createOwnership,
                 yellow,
                 permissionsScriptFn,
                 hostsPath,
@@ -37,7 +37,7 @@ isCofferSetup({ hostsPath, fs, hostsEntry })
         }
     }).then((successMsg) => {
         console.log(successMsg)
-        return setUpPortProxy({ portProxyScript: portProxyScript.create, exec })
+        return setUpPortProxy({ portProxyScript: portProxyScript.createPortF, exec })
     }).then((msg) => {
         console.log(msg)
         console.log(`Vist ${orange('coffer.co')} in your browser for the application!`)
