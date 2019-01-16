@@ -4,16 +4,16 @@ import chalk from 'chalk'
 import { exec } from 'child_process'
 import path from 'path'
 
-import { getHostsPath, getCliColors, getFileOwnershipScript, getPermissionsScriptFn, getPortProxyScript } from "./utils";
+import { getHostsPath, getCliColors, getFileOwnershipScript, getPermissionsScriptFn, getPortProxyScript, getPortProxyScripts } from "./utils";
 import { isCofferSetup, setupHostsConfig, setUpPortProxy } from './setup'
 
 const platform = process.platform
 const hostsEntry = '127.3.3.3   coffer.co'
 const { orange, yellow, green } = getCliColors({ chalk })
 const hostsPath = getHostsPath({ platform, path })
-const fileOwnershipScript = getFileOwnershipScript({ platform, hostsPath })
-const permissionsScriptFn = getPermissionsScriptFn({ platform, hostsPath })
-const portProxyScript = getPortProxyScript({ platform })
+const fileOwnershipScript = getFileOwnershipScripts({ platform, hostsPath })
+const permissionsScriptFn = getPermissionsScriptsFn({ platform, hostsPath })
+const portProxyScript = getPortProxyScripts({ platform })
 
 console.log(`\nCurrent environment: ${yellow(platform)}`)
 isCofferSetup({ hostsPath, fs, hostsEntry })
@@ -24,7 +24,7 @@ isCofferSetup({ hostsPath, fs, hostsEntry })
             return setupHostsConfig({
                 exec,
                 fs,
-                hostsScript: fileOwnershipScript,
+                hostsScript: fileOwnershipScript.create,
                 yellow,
                 permissionsScriptFn,
                 hostsPath,
@@ -37,7 +37,7 @@ isCofferSetup({ hostsPath, fs, hostsEntry })
         }
     }).then((successMsg) => {
         console.log(successMsg)
-        return setUpPortProxy({ portProxyScript, exec })
+        return setUpPortProxy({ portProxyScript: portProxyScript.create, exec })
     }).then((msg) => {
         console.log(msg)
         console.log(`Vist ${orange('coffer.co')} in your browser for the application!`)

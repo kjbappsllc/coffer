@@ -1,7 +1,10 @@
 {
   "name": "coffer",
   "version": "1.0.1",
-  "description": "",
+  "description": "Full fledged budget application.",
+  "repository": {
+    "github": "https://github.com/kjbappsllc/coffer"
+  },
   "main": "index.js",
   "bin": "./dist/interfaces/cli/index.js",
   "scripts": {
