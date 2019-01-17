@@ -11,8 +11,8 @@ export const nedbDriver = ({
 }) => {
     let db = {}
     return dbDriverAdapter.adapt({
-        connect: ({ urls }) => {
-            return createConnectFn({ fs })({ urls, db, nedb: Database })
+        connect: ({ urls, config }) => {
+            return createConnectFn({ fs })({ urls, db, nedb: Database, config: config.folderPath })
         },
         insert: ({ collection, doc }) => {
             return createInsertFn({ db })({ collection, doc })
