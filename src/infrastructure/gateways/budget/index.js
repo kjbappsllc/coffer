@@ -1,8 +1,7 @@
 
-export const createBudgetGatewayImpl = ({
-    iBudgetGateway,
+export const createBudgetGateway = ({
     baseUrl
-}) => iBudgetGateway.implement({
+}) => ({
     create: ({ budget }) => {
         return fetch(`${baseUrl}/budgets`, {
             method: "POST",

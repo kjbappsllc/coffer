@@ -8,7 +8,7 @@
   "main": "index.js",
   "bin": "./dist/external-interfaces/cli/index.js",
   "scripts": {
-    "build": "babel ./src --out-dir ./dist",
+    "build": "rm -rf ./dist && babel ./src --out-dir ./dist",
     "test": "mocha --require @babel/register ./src/**/*.test.js",
     "dply:test": "npm run build && npm install -g . && coffer",
     "dply:patch": "npm version patch && npm run build && npm install -g .",

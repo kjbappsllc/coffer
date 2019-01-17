@@ -4,20 +4,21 @@ const budgetTypes = Object.freeze({
     TRADITIONAL: 'traditional'
 })
 
-export const createBudgetEntity = ({ validate }) => ({
+export const createBudgetEntity = ({
+    validate,
+    createUUID
+}) => ({
     budget: {
         init: ({
             title,
             budgetType,
-            id,
             groups = []
         }) => validate({
             budget: {
                 title,
                 budgetType,
                 groups,
-                id,
-                $$type: 'budget'
+                _id: createUUID()
             },
             budgetTypes
         }),
