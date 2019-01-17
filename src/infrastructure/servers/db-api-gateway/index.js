@@ -1,8 +1,9 @@
-import { routes } from './routes'
+import { createRoutes } from './routes'
 
 export const createDbRestService = ({
     hapi,
-    port
+    port,
+    dbDriver
 }) => {
     let server
     return {
@@ -15,7 +16,7 @@ export const createDbRestService = ({
                         routes: { cors: true }
                     })
                 }
-                server.route(routes);
+                server.route(createRoutes({ dbDriver }));
                 server
                     .start()
                     .then(() => {

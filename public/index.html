@@ -11,6 +11,18 @@
 <body>
     <h1>APP BEING SERVED BY HAPI AND INERT ---</h1>
     <div>This is serving index.html</div>
+    <script>
+        let data = { test: 5, coffer: 'This is a test' }
+        fetch("http://localhost:8081/budgets", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(data => console.log(data))
+    </script>
 </body>
 
 </html>

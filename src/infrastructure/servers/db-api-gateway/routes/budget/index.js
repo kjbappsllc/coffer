@@ -1,5 +1,5 @@
 
-export const createBudgetRoutes = () => [
+export const createBudgetRoutes = ({ dbDriver }) => [
     {
         method: 'POST',
         path: '/budgets',
