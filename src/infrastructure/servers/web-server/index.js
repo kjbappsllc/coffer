@@ -4,14 +4,16 @@ export const createWebServer = ({
     inert,
     port
 }) => {
-    const server = hapi.Server({
-        port,
-        host: 'localhost'
-    })
-    
+    let server
     return {
         webServer: {
             start: () => {
+                if (!server) {
+                    server = hapi.Server({
+                        port,
+                        host: 'localhost'
+                    })
+                }
                 server.register(inert).then(() => {
                     server.route({
                         method: 'GET',
@@ -24,7 +26,7 @@ export const createWebServer = ({
                     server
                         .start()
                         .then(() => {
-                            console.log(`Server running at: ${server.info.uri}`);
+                            console.log(`Web Server running at: ${server.info.uri}`);
                         })
                 })
             }

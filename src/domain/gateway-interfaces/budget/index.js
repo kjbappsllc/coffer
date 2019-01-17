@@ -8,10 +8,10 @@ export const createIBudgetGateway = () => ({
             editTitle,
             getAll
         }) => ({
-            create: ({ budget }) => create(budget),
-            removeById: ({ id }) => removeById(id),
-            addGroup: ({ id, group }) => addGroup(id, group),
-            editTitle: ({ id, budget }) => editTitle(id, budget),
+            create: ({ budget }) => create({ budget }),
+            removeById: ({ id }) => removeById({ id }),
+            addGroup: ({ id, group }) => addGroup({ id, group }),
+            editTitle: ({ id, budget }) => editTitle({ id, budget }),
             getAll: () => getAll(),
             $$type: 'iBudgetGateway'
         })
