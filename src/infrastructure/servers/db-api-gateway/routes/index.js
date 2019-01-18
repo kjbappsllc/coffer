@@ -1,7 +1,8 @@
 import { createBudgetRoutes } from './budget'
 
 export const createRoutes = ({
-    dbDriver
+    dbDriver,
+    collections
 }) => [
-    ...createBudgetRoutes({ dbDriver })
+    ...createBudgetRoutes({ dbDriver, budgetCollectionName: collections.budget })
 ]

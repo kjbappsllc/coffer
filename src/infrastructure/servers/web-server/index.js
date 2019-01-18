@@ -23,11 +23,9 @@ export const createWebServer = ({
                         }
                     });
 
-                    server
-                        .start()
-                        .then(() => {
-                            console.log(`Web Server running at: ${server.info.uri}`);
-                        })
+                    return server.start().then(() => {
+                        console.log(`Web Server running at: ${server.info.uri}`);
+                    })
                 })
             }
         }

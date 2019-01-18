@@ -23,6 +23,7 @@ export const createConnectFn = ({
                 }
                 db[collection] = new Database({ filename: path, autoload: true })
             })
+            console.log("Connected to database ...")
             resolve({ db })
         })
     }

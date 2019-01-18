@@ -1,7 +1,7 @@
 import { budget } from '../../../domain/entities'
 
 export const createAddBudgetUseCase = ({
-    create = () => { throw new Error("Provide create method") }
+    create
 }) => ({
     addBudget: {
         execute: ({
@@ -13,7 +13,13 @@ export const createAddBudgetUseCase = ({
         }) => {
             try {
                 const newBudget = budget.init(budget)
-                return create({ budget: newBudget })
+                return create({
+                    budget: newBudget
+                }).then(budget => {
+                    onBudgetAdded({ budget })
+                }).catch(err => {
+                    onBudgetError({ err, newBudget })
+                })
             } catch (error) {
                 return Promise.reject(error)
             }

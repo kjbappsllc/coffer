@@ -11,7 +11,7 @@ export const createInsertFn = ({
     return new Promise((resolve, reject) => {
         const currDb = db[collection]
         currDb.insert(doc, (err, newDoc) => {
-            err ? reject(err) : resolve(newDoc)
+            err ? reject(err.message) : resolve(newDoc)
         })
     })
 }

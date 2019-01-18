@@ -8,7 +8,7 @@
   "main": "index.js",
   "bin": "./dist/external-interfaces/cli/index.js",
   "scripts": {
-    "build": "rm -rf ./dist && babel ./src --out-dir ./dist",
+    "build": "babel ./src --out-dir ./dist",
     "test": "mocha --require @babel/register ./src/**/*.test.js",
     "dply:test": "npm run build && npm install -g . && coffer",
     "dply:patch": "npm version patch && npm run build && npm install -g .",
@@ -31,6 +31,7 @@
     "chalk": "^2.4.2",
     "hapi": "^17.8.1",
     "inert": "^5.1.2",
-    "nedb": "^1.8.0"
+    "nedb": "^1.8.0",
+    "node-fetch": "^2.3.0"
   }
 }

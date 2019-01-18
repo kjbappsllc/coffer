@@ -1,8 +1,10 @@
-import { createBudgetGatewayImpl } from './budget'
+import { createBudgetGateway } from './budget'
+import nfetch from 'node-fetch'
 
 const baseUrl = 'http://localhost:8081'
-const budgetGatewayImpl = createBudgetGatewayImpl({ baseUrl })
+const _fetch = typeof window === 'undefined' ? nfetch : fetch
+const budgetGateway = createBudgetGateway({ baseUrl, fetch: _fetch })
 
 export {
-    budgetGatewayImpl
+    budgetGateway
 }

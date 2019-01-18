@@ -3,9 +3,14 @@ import { createRoutes } from './routes'
 export const createDbRestService = ({
     hapi,
     port,
-    dbDriver
+    dbDriver,
+    path
 }) => {
     let server
+    const collections = Object.freeze({
+        budget: 'Budget'
+    })
+    const folderPath = path.resolve(__dirname, '../../database-files')
     return {
         dbRestAPI: {
             start: () => {
@@ -15,13 +20,18 @@ export const createDbRestService = ({
                         host: 'localhost',
                         routes: { cors: true }
                     })
-                }
-                server.route(createRoutes({ dbDriver }));
-                server
-                    .start()
-                    .then(() => {
-                        console.log(`DB API running at: ${server.info.uri}`);
+                    dbDriver.connect({
+                        urls: Object.values(collections),
+                        config: { folderPath }
+                    }).catch(err => {
+                        console.log(err)
+                        process.exit(1)
                     })
+                }
+                server.route(createRoutes({ dbDriver, collections }));
+                return server.start().then(() => {
+                    console.log(`DB API running at: ${server.info.uri}`);
+                })
             }
         }
     }
