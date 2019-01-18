@@ -13,7 +13,7 @@ export const createBudgetGateway = ({
                 body: JSON.stringify(budget)
             }).then(res => {
                 if ( res.status !== 200 ) {
-                    return reject(res.statusText)
+                    return reject(new Error(res.statusText))
                 }
                 return res.json()
             }).then((res) => {
