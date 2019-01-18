@@ -11,13 +11,13 @@ export const createBudgetGateway = ({
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(budget)
-            }).then(response => {
-                return response.json()
-            }).then(({ res, err }) => {
-                if (!err) {
-                    return resolve(res)
+            }).then(res => {
+                if ( res.status !== 200 ) {
+                    return reject(res.statusText)
                 }
-                return reject(err)
+                return res.json()
+            }).then((res) => {
+                resolve(res)
             })
         })
     },
