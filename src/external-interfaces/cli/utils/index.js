@@ -1,3 +1,22 @@
+export const getUsername = ({
+    exec
+}) => {
+    return new Promise((resolve, reject) => {
+        exec('whoami', (err, stdout, _) => {
+            err ? reject(err) : resolve(stdout)
+        })
+    })
+}
+
+export const execScript = ({
+    script,
+    exec
+}) => new Promise((resolve, reject) => {
+    exec(script, (err, stdout, _) => {
+        err ? reject(err) : resolve(stdout)
+    })
+})
+
 export const getHostsPath = ({ platform, path }) => {
     return platform === 'win32'
         ? path.relative('.', 'C:/Windows/System32/drivers/etc/hosts')
@@ -15,9 +34,7 @@ export const getFileOwnershipScripts = ({ platform, hostsPath }) => {
     }
 }
 
-export const getPermissionsScriptsFn = ({ platform, hostsPath }) => ({
-    username
-}) => {
+export const getPermissionsScripts = ({ platform, hostsPath, username }) => {
     return {
         addPermissions: platform === 'win32'
             ? `icacls ${hostsPath} /grant:r ${username.split('\\')[1].trim()}:(R,W) && icacls ${hostsPath} /reset`

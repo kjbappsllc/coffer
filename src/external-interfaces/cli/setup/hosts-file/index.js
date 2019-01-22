@@ -1,38 +1,28 @@
-import { getUsername } from './username'
-import { setUserOwnership } from './hosts-ownership'
-import { setPermissions } from './permissions'
 import { appendEntryToHosts } from './hosts-entry'
 
 export const setupHostsConfig = ({
     exec,
     fs,
-    hostsScript,
+    fileOwnershipScript,
     hostsPath,
     hostsEntry,
-    permissionsScriptFn,
-    yellow,
+    permissionsScript,
+    execScript
 }) => {
-    return new Promise((resolve, reject) => {
-        getUsername({
-            exec
-        }).then(username => {
-            console.log(`\nCurrently logged in user: `, yellow(username))
-            return setUserOwnership({ exec, hostsScript })
-                .then(() => {
-                    return Promise.resolve()
-                }).then(() => {
-                    const permissionsScript = permissionsScriptFn({ username })
-                    return setPermissions({ exec, permissionsScript })
-                }).then((output) => {
-                    console.log(output)
-                    return appendEntryToHosts({ fs, hostsPath, hostsEntry })
-                }).catch(err => {
-                    reject(err)
-                })
+    return execScript({ exec, script: fileOwnershipScript })
+        .then(() => {
+            return Promise.resolve()
+        }).then(() => {
+            console.log("Getting Permissions ...")
+            return execScript({ exec, script: permissionsScript })
+        }).then(() => {
+            console.log("Adding mapping to hosts file ...")
+            return appendEntryToHosts({ fs, hostsPath, hostsEntry })
         }).then((msg) => {
-            resolve(msg)
-        }).catch((err) => {
-            reject(err)
+            console.log(msg)
+            return msg
+        }).catch(err => {
+            console.log(err)
+            return err
         })
-    })
 }

@@ -30,7 +30,7 @@ export const createDbRestService = ({
                 }
                 server.route(createRoutes({ dbDriver, collections }));
                 return server.start().then(() => {
-                    console.log(`DB API running at: ${server.info.uri}`);
+                    return Promise.resolve(`DB API running at: ${server.info.uri}`)
                 })
             }
         }

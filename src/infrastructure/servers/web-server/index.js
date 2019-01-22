@@ -2,7 +2,8 @@
 export const createWebServer = ({
     hapi,
     inert,
-    port
+    port,
+    path
 }) => {
     let server
     return {
@@ -14,17 +15,21 @@ export const createWebServer = ({
                         host: 'localhost'
                     })
                 }
-                server.register(inert).then(() => {
+                return server.register(inert).then(() => {
                     server.route({
                         method: 'GET',
                         path: '/',
                         handler: (request, h) => {
-                            return h.file('./public/index.html');
+                            const htmlPath = path.resolve(__dirname,'../../../public/index.html')
+                            console.log('Serving html from', htmlPath)
+                            return h.file(htmlPath, {
+                                confine: false
+                            });
                         }
                     });
 
                     return server.start().then(() => {
-                        console.log(`Web Server running at: ${server.info.uri}`);
+                        return Promise.resolve(`Web Server running at: ${server.info.uri}`)
                     })
                 })
             }
