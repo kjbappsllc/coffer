@@ -9,22 +9,29 @@ export const createWebServer = ({
     return {
         webServer: {
             start: () => {
+                const dirPath = path.resolve(__dirname, '../../../../build-web')
+                console.log("Files will be served from: ", dirPath)
                 if (!server) {
                     server = hapi.Server({
                         port,
-                        host: 'localhost'
+                        host: 'localhost',
+                        routes: {
+                            files: {
+                                relativeTo: dirPath
+                            }
+                        }
                     })
                 }
                 return server.register(inert).then(() => {
                     server.route({
                         method: 'GET',
-                        path: '/',
-                        handler: (request, h) => {
-                            const htmlPath = path.resolve(__dirname,'../../../public/index.html')
-                            console.log('Serving html from', htmlPath)
-                            return h.file(htmlPath, {
-                                confine: false
-                            });
+                        path: '/{param*}',
+                        handler: {
+                            directory: {
+                                path: '.',
+                                redirectToSlash: true,
+                                index: true,
+                            }
                         }
                     });
 
