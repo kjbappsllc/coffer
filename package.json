@@ -8,14 +8,13 @@
   "main": "index.js",
   "bin": "./build/external-interfaces/cli/index.js",
   "scripts": {
-    "build": "webpack --mode production && babel ./src --out-dir ./build",
+    "build": "webpack --mode production && babel ./src --out-dir ./build/proj-build",
     "build:test": "npm run build && node playground.js",
     "test": "mocha --require @babel/register ./src/**/*.test.js",
     "dply:test": "npm run build && npm install -g . && coffer",
     "dply:patch": "npm version patch && npm run build && npm install -g .",
     "dply:minor": "npm version minor && npm run build && npm install -g .",
-    "dply:major": "npm version major && npm run build && npm install -g .",
-    "postinstall": "echo \"\n* Thank you for installing Coffer *\n\""
+    "dply:major": "npm version major && npm run build && npm install -g ."
   },
   "keywords": [],
   "author": "Keyshawn Butts",

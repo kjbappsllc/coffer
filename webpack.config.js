@@ -7,7 +7,7 @@ module.exports = {
     mode: 'production',
     entry: ['@babel/polyfill', './src/external-interfaces/web-ui/index.js'],
     output: {
-        path: path.resolve(__dirname, './build-web'),
+        path: path.resolve(__dirname, './build/web-build'),
         filename: 'bundle.js'
     },
     module: {
@@ -36,7 +36,7 @@ module.exports = {
             template: path.resolve(__dirname, './src/external-interfaces/web-ui/index.html'),
             title: "Coffer: Budget Application"
         }),
-        new CleanWebpackPlugin('./build-web', {}),
+        new CleanWebpackPlugin('./build/web-build', {}),
         new MiniCssExtractPlugin({
             filename: 'main.css'
         })

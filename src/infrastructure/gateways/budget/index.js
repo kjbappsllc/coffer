@@ -27,7 +27,7 @@ export const createBudgetGateway = ({
     addGroup: ({ id, group }) => {
         //implementation
     },
-    editTitle: ({ id, budget }) => {
+    edit: ({ id, budget }) => {
         //implementation
     },
     getAll: () => {
