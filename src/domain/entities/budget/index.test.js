@@ -4,11 +4,12 @@ import { expect } from 'chai'
 
 describe("DOMAIN:ENTITY:budget", () => {
     const validate = ({ budget: t }) => t
-    const { budget: budgetE } = createBudgetEntity({ validate })
+    const createUUID = () => 1
+    const { budget: budgetE } = createBudgetEntity({ validate, createUUID })
 
     it('Should return budget object with correct default values and keys', (done) => {
         const budget = budgetE.init({})
-        expect(budget.$$type).to.be.equal('budget')
+        expect(budget._id).to.be.equal(1)
         expect(budget.groups).to.be.eql([])
         done()
     })
@@ -16,14 +17,12 @@ describe("DOMAIN:ENTITY:budget", () => {
     it('Should return budget object with correct keys when passed in', (done) => {
         const budget = budgetE.init({ 
             title: 'test',
-            budgetType: 'test-type',
-            id: 1
+            budgetType: 'test-type'
         })
 
         expect(budget.title).to.be.equal('test')
         expect(budget.budgetType).to.be.equal('test-type')
-        expect(budget.id).to.be.eql(1)
-        expect(budget.$$type).to.be.equal('budget')
+        expect(budget._id).to.be.equal(1)
         done()
     })
 })

@@ -6,7 +6,7 @@
     "github": "https://github.com/kjbappsllc/coffer"
   },
   "main": "index.js",
-  "bin": "./dist/external-interfaces/cli/index.js",
+  "bin": "./build/external-interfaces/cli/index.js",
   "scripts": {
     "build": "webpack --mode production && babel ./src --out-dir ./build",
     "build:test": "npm run build && node playground.js",
@@ -14,7 +14,8 @@
     "dply:test": "npm run build && npm install -g . && coffer",
     "dply:patch": "npm version patch && npm run build && npm install -g .",
     "dply:minor": "npm version minor && npm run build && npm install -g .",
-    "dply:major": "npm version major && npm run build && npm install -g ."
+    "dply:major": "npm version major && npm run build && npm install -g .",
+    "postinstall": "echo \"\n* Thank you for installing Coffer *\n\""
   },
   "keywords": [],
   "author": "Keyshawn Butts",
@@ -25,6 +26,7 @@
     "@babel/core": "^7.2.2",
     "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",
     "autoprefixer": "^9.4.6",
     "babel-loader": "^8.0.5",
@@ -35,6 +37,7 @@
     "mini-css-extract-plugin": "^0.5.0",
     "mocha": "^5.2.0",
     "node-fetch": "^2.3.0",
+    "node-sass": "^4.11.0",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
     "url-loader": "^1.1.2",

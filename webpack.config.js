@@ -36,6 +36,9 @@ module.exports = {
             template: path.resolve(__dirname, './src/external-interfaces/web-ui/index.html'),
             title: "Coffer: Budget Application"
         }),
-        new CleanWebpackPlugin('./build-web', {})
+        new CleanWebpackPlugin('./build-web', {}),
+        new MiniCssExtractPlugin({
+            filename: 'main.css'
+        })
     ]
 };
