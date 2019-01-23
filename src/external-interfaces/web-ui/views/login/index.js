@@ -5,8 +5,8 @@ export const loginView = ({
 }) => ({
     onSubmit
 }) => (
-    <div className="fill-parent flex">
+    <div className="fill-parent flex-row">
         <div className="flex-column" style={styles.leftPanel}> Hello </div>
-        <div className="flex"></div>
+        <div className="flex" style={styles.rightPanel}>Hey</div>
     </div>
 )

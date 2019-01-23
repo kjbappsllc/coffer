@@ -9,7 +9,7 @@ export const createWebServer = ({
     return {
         webServer: {
             start: () => {
-                const dirPath = path.resolve(__dirname, '../../../../build-web')
+                const dirPath = path.resolve(__dirname, '../../../../web-build')
                 console.log("Files will be served from: ", dirPath)
                 if (!server) {
                     server = hapi.Server({

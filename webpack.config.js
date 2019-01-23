@@ -4,7 +4,6 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
-    mode: 'production',
     entry: ['@babel/polyfill', './src/external-interfaces/web-ui/index.js'],
     output: {
         path: path.resolve(__dirname, './build/web-build'),
