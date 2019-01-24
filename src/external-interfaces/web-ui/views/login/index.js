@@ -4,9 +4,18 @@ export const loginView = ({
     viewFramework: React
 }) => ({
     onSubmit
-}) => (
-    <div className="fill-parent flex-row">
-        <div className="flex-column" style={styles.leftPanel}> Hello </div>
-        <div className="flex" style={styles.rightPanel}>Hey</div>
-    </div>
-)
+}) => {
+    let pwRef = React.createRef()
+    let confirmPwRef = React.createRef()
+    return (
+        <div className="fill-parent flex-row">
+            <div className="flex-column" style={styles.leftPanel}>Coffer</div>
+            <div className="flex-column" style={styles.rightPanel}>
+                <div>Register</div>
+                <input ref={pwRef} />
+                <input ref={confirmPwRef} />
+                <button>Submit</button>
+            </div>
+        </div>
+    )
+}
