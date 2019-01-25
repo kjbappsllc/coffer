@@ -2,6 +2,9 @@
 export const createAddBudgetUseCase = ({
     budgetEntity
 }) => ({
+    budgetGateway: {
+        save
+    },
     presenter: {
         onBudgetBeforeAdd,
         onBudgetAdded,
@@ -14,7 +17,7 @@ export const createAddBudgetUseCase = ({
         try {
             const budgetObj = budgetEntity.init({ budget: newBudget })
             onBudgetBeforeAdd()
-            return create({
+            return save({
                 budget: budgetObj
             }).then(budget => {
                 return onBudgetAdded({ newBudget: budget })
