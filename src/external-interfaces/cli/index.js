@@ -4,17 +4,18 @@ import chalk from 'chalk'
 import { exec } from 'child_process'
 import path from 'path'
 
-import { getHostsPath, getCliColors, getFileOwnershipScripts, getPermissionsScripts, getPortProxyScripts, getUsername, execScript } from "./utils";
+import { getHostsPath, getCliColors, getFileOwnershipScripts, getPermissionsScripts, getPortProxyScripts, execScript } from "./utils";
 import { isCofferSetup, setupHostsConfig } from './setup'
 import { dbRestAPI, webServer } from '../../infrastructure/servers'
 
 const platform = process.platform
 const hostsPath = getHostsPath({ platform, path })
-const hostsEntry = '127.3.3.3   coffer.co'
+const hostsEntry = '127.3.3.3   coffer.io'
 const { orange, yellow, green } = getCliColors({ chalk })
 
 console.log(`\nCurrent environment: ${yellow(platform)}`)
-getUsername({
+execScript({
+    script: 'whoami',
     exec
 }).then(username => {
     console.log(`Currently logged in user: `, yellow(username))
@@ -49,12 +50,12 @@ getUsername({
         console.log("\nCompleted setup!")
         console.log("Revoking ownership and removing permissions ...")
         const fileOwnershipScript = getFileOwnershipScripts({ platform, hostsPath }).removeOwnership
-        const permissionsScript = getPermissionsScripts({ platform, hostsPath, username }).removePermissions
         return execScript({
             script: fileOwnershipScript, exec
         })
     }).then(() => {
-        console.log("Revoked ownership ...")
+        console.log("Revoked permissions ...")
+        const permissionsScript = getPermissionsScripts({ platform, hostsPath, username }).removePermissions
         return execScript({ script: permissionsScript, exec })
     }).then(() => {
         console.log("Revoked Permissions ...")
@@ -70,7 +71,7 @@ getUsername({
     return webServer.start()
 }).then((successMsg) => {
     console.log(successMsg)
-    console.log(`Vist ${orange('coffer.co')} in your browser for the application!`)
+    console.log(`Vist ${orange('coffer.io')} in your browser for the application!`)
 }).catch((err) => {
     console.log(err)
     process.exit(1)

@@ -1,21 +1,13 @@
-import { styles } from './inline-styles'
+import viewFramework from 'react'
+import { connect } from '../../utils'
+import { loginController } from '../../../../interface-adapters/controllers'
+import { loginView as login } from './view'
+import { styles } from './styles'
+import { loginViewModel as viewModel } from './view-model'
 
-export const loginView = ({
-    viewFramework: React
-}) => ({
-    onSubmit
-}) => {
-    let pwRef = React.createRef()
-    let confirmPwRef = React.createRef()
-    return (
-        <div className="fill-parent flex-row">
-            <div className="flex-column" style={styles.leftPanel}>Coffer</div>
-            <div className="flex-column" style={styles.rightPanel}>
-                <div>Register</div>
-                <input ref={pwRef} />
-                <input ref={confirmPwRef} />
-                <button>Submit</button>
-            </div>
-        </div>
-    )
-}
+export const LoginView = connect({
+    viewFramework,
+    viewModel,
+    subscribe: () => { },
+    controller: loginController
+})({ View: login({ viewFramework, styles }) })

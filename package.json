@@ -6,7 +6,7 @@
     "github": "https://github.com/kjbappsllc/coffer"
   },
   "main": "index.js",
-  "bin": "./build/external-interfaces/cli/index.js",
+  "bin": "./build/proj-build/external-interfaces/cli/index.js",
   "scripts": {
     "build:prod": "npm-run-all build:proj build:web",
     "build:test": "npm-run-all build:proj --parallel build:web:dev playground",

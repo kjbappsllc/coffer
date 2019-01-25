@@ -11,8 +11,7 @@ export const createUserProfileEntity = ({ validate }) => ({
                 name,
                 balance,
                 incomeSources,
-                pastLocations,
-                $$type: 'userProfile'
+                pastLocations
             }
         })
     }
