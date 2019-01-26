@@ -8,11 +8,7 @@ export const createLoginPresenter = ({
     let viewModel = { ...loginViewModel }
     const { subscribeToState } = state
     let unsubscribe = subscribeToState({
-        selector: ({
-            test: {
-                label
-            }
-        }) => ((viewModel = {...viewModel, label } )),
+        selector: () => viewModel,
         cb: () => {
             console.log("Login Presenter Received State Update ...")
             updateView(viewModel)

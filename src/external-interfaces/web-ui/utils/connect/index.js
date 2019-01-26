@@ -20,12 +20,12 @@ export const createConnect =  ({
             const { output, unsubscribeFromState } = presenter({ viewModel, state: this.context })
             const controllerInterface = controller({ output })
             this.subscription = subscribe(newViewModel => {
-                const newState = { ...newViewModel, ...controllerInterface}
+                const newState = { ...newViewModel, ...controllerInterface }
                 this.setState(newState)
             })
             this.cleanUp = () => {
-                this.subscription.unsubscribe()
-                unsubscribeFromState()
+                this.subscription.unsubscribe && this.subscription.unsubscribe() 
+                unsubscribeFromState && unsubscribeFromState()
             }
         }
 
@@ -34,7 +34,6 @@ export const createConnect =  ({
         }
 
         render() {
-            console.log(this.state)
             return (
                 <StateContext.Consumer>
                     { () => <View {...this.props} {...this.state} /> }
