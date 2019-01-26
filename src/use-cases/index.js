@@ -1,4 +1,4 @@
-import { budget as budgetEntity } from '../../../domain/entities'
+import { budget as budgetEntity } from '../domain/entities'
 import { encryptPassword } from '../infrastructure/security'
 
 import { createAddBudgetUseCase } from './add-budget'

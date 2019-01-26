@@ -1,7 +1,7 @@
 import hapi from 'hapi'
 import inert from 'inert'
 import path from 'path'
-import { createDbDriver } from '../3rd-party'
+import { createDbDriver } from '../3rd-party/db'
 
 import { createDbRestService } from './db-api-gateway'
 import { createWebServer } from './web-server'

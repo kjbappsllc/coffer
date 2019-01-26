@@ -6,7 +6,6 @@ import { styles } from './styles'
 import { loginViewModel as viewModel } from './view-model'
 
 export const LoginView = connect({
-    viewFramework,
     viewModel,
     subscribe: () => { },
     controller: loginController

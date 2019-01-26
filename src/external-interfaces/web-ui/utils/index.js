@@ -1,28 +1,12 @@
+import viewFramework from 'react'
 
-export const connect = ({
-    viewFramework: React,
-    viewModel,
-    controller,
-    subscribe
-}) => ({
-    View
-}) => {
-    return class Connect extends React.Component {
-        constructor(props) {
-            super(props)
-            this.state = viewModel
-            this.controller = controller({ viewModel })
-            this.subscription = subscribe(newViewModel => {
-                this.setState(newViewModel)
-            })
-        }
+import { createConnect } from './connect'
+import { createStateProvider } from './provider'
 
-        componentWillUnmount() {
-            this.subscription.unsubscribe()
-        }
+const connect = createConnect({ viewFramework })
+const provider = createStateProvider({ viewFramework })
 
-        render() {
-            return <View {...this.props} {...this.state} {...this.controller} />
-        }
-    }
+export {
+    connect,
+    provider
 }

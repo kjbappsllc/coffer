@@ -7,5 +7,10 @@ export const createLoginController = ({
 }) => ({
     viewModel
 }) => ({
-    savePasswordAndLogin: ({ password, confirmPassword }) => console.log("Saving Password ..")
+    savePasswordAndLogin: ({ password, confirmPassword }) => {
+        const presenter = loginPresenter({ viewModel })
+        addSecurePasswordUseCase({ 
+            presenter
+        }).execute({ password, confirmPassword })
+    }
 })

@@ -1,4 +1,4 @@
-import crypto from 'crypto'
+import crypto from 'sjcl'
 
 import { createEncryptPassword } from './encrypt-pass'
 import { createDecryptPassword } from './decrypt-pass'

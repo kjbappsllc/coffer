@@ -9,15 +9,23 @@ export const createAddSecurePasswordUseCase = ({
     }
 }) => ({
     execute: ({
-        password: pass
+        password: pass,
+        confirmPassword: confirm
     }) => {
+        try {
+            if (pass !== confirm) {
+                throw new Error("Passwords do not match")
+            }
+        } catch (err) {
+            return onPasswordEncryptError({ err, pass: null })
+        }
         onBeforePasswordEncrypted()
         return encryptPassword({
             pass
         }).then((encryptedPass) => {
-            onAfterPasswordEncrypted({ encryptedPass })
+            return onAfterPasswordEncrypted({ encryptedPass })
         }).catch((err) => {
-            onPasswordEncryptError({ err, pass })
+            return onPasswordEncryptError({ err, pass })
         })
     }
 
