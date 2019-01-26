@@ -2,11 +2,16 @@ import viewFramework from 'react'
 
 import { createConnect } from './connect'
 import { createStateProvider } from './provider'
+import { createContext } from './context'
 
-const connect = createConnect({ viewFramework })
-const provider = createStateProvider({ viewFramework })
+const context = createContext({ viewFramework })
+
+const stateContext = context({ initialValue: null })
+const connect = createConnect({ viewFramework, stateContext })
+const provider = createStateProvider({ viewFramework, stateContext })
 
 export {
     connect,
-    provider
+    provider,
+    context
 }

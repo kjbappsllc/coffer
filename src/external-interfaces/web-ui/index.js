@@ -3,5 +3,8 @@ import ReactDOM from 'react-dom'
 import './scss/main.scss'
 
 import { LoginView } from './views'
+import { provider as State } from './utils'
+import { state } from '../../infrastructure/state'
 
-ReactDOM.render(<LoginView />, document.getElementById('root'))
+window.state = state
+ReactDOM.render(<State state={state}><LoginView /></State>, document.getElementById('root'))

@@ -13,14 +13,18 @@
     "build:proj": "babel ./src --out-dir ./build/proj-build",
     "build:web": "webpack --mode production",
     "build:web:dev": "webpack --mode development --watch --hot",
-    "playground": "node playground.js",
+    "playground": "npm run build:proj && node playground.js",
     "test": "mocha --require @babel/register ./src/**/*.test.js",
     "dply:test": "npm run build:prod && npm install -g . && coffer",
     "dply:patch": "npm run build:prod && npm version patch && npm install -g .",
     "dply:minor": "npm run build:prod && npm version minor && npm install -g .",
     "dply:major": "npm run build:prod && npm version major && npm install -g ."
   },
-  "keywords": [],
+  "keywords": [
+    "budget",
+    "cli",
+    "react"
+  ],
   "author": "Keyshawn Butts",
   "email": "kbutts314@gmail.com",
   "license": "ISC",
@@ -52,6 +56,7 @@
     "chalk": "^2.4.2",
     "hapi": "^17.8.1",
     "inert": "^5.1.2",
+    "lodash": "^4.17.11",
     "nedb": "^1.8.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",

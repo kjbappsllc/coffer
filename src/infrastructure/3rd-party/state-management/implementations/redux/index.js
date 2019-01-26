@@ -1,18 +1,25 @@
 
 export const createReduxStateManager = ({
-    createStore: createState
+    createStore,
+    createSubject
 }) => ({
-    create: ({
+    createState: ({
         initialState
     }) => {
-        const mainReducer = (state = initialState, action) => ({ ...state, ...action.newState })
-        const state = createState(mainReducer)
+        const observableState = createSubject.replay({ replays: 1 })
+        const mainReducer = (state = undefined, action) => action.type === 'modify' ? { ...state, ...action.newState } : state
+        const state = createStore(mainReducer, initialState)
+        state.subscribe(() => {
+            observableState.next(state.getState())
+        })
+        state.dispatch({ type: 'HYDRATE_OBSERVABLE_STATE' })
         return {
             getState: state.getState,
             modifyState: ({ newState }) => {
+                console.log("State being modified")
                 state.dispatch({ type: 'modify', newState })
             },
-            subscribeToState: state.subscribe
-        } 
+            subscribeToState: ({ selector, cb }) => observableState.map(selector)(cb)
+        }
     }
 })

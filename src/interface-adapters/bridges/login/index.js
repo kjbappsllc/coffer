@@ -1,11 +1,11 @@
 
-export const createLoginSubject = ({
+export const createLoginBridge = ({
     createSubject
 }) => {
     const {
         subscription: loginViewSubscription,
         next: updateLoginView
-    } = createSubject()
+    } = createSubject.replay({ replays: 1 })
 
     return {
         loginViewSubscription,

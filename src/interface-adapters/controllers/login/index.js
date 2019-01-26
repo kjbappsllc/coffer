@@ -1,16 +1,12 @@
 
 export const createLoginController = ({
-    encryptPassword,
-    decryptPassword,
-    loginPresenter,
     addSecurePasswordUseCase
 }) => ({
-    viewModel
+    output
 }) => ({
     savePasswordAndLogin: ({ password, confirmPassword }) => {
-        const presenter = loginPresenter({ viewModel })
         addSecurePasswordUseCase({ 
-            presenter
+            output
         }).execute({ password, confirmPassword })
     }
 })

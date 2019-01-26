@@ -1,29 +1,47 @@
 
 export const createConnect =  ({
-    viewFramework: React
+    viewFramework: React,
+    stateContext: StateContext
 }) => ({
     viewModel,
     controller,
-    subscribe
+    subscribe,
+    presenter
 }) => ({
     View
 }) => {
-    return class Connect extends React.Component {
+    class Connect extends React.Component {
         constructor(props) {
             super(props)
-            this.state = viewModel
-            this.controller = controller({ viewModel })
+            this.state = {}
+        }
+
+        componentDidMount() {
+            const { output, unsubscribeFromState } = presenter({ viewModel, state: this.context })
+            const controllerInterface = controller({ output })
             this.subscription = subscribe(newViewModel => {
-                this.setState(newViewModel)
+                const newState = { ...newViewModel, ...controllerInterface}
+                this.setState(newState)
             })
+            this.cleanUp = () => {
+                this.subscription.unsubscribe()
+                unsubscribeFromState()
+            }
         }
 
         componentWillUnmount() {
-            this.subscription.unsubscribe()
+            this.cleanUp()
         }
 
         render() {
-            return <View {...this.props} {...this.state} {...this.controller} />
+            console.log(this.state)
+            return (
+                <StateContext.Consumer>
+                    { () => <View {...this.props} {...this.state} /> }
+                </StateContext.Consumer>
+            )
         }
     }
+    Connect.contextType = StateContext
+    return Connect
 }

@@ -1,8 +1,8 @@
-import { Subject } from 'rxjs'
-import { filter, map, distinct } from 'rxjs/operators'
+import { Subject, ReplaySubject } from 'rxjs'
+import { filter, map } from 'rxjs/operators'
 import { rxjsSubject } from './implementations'
 
-const { createSubject } = rxjsSubject({ Subject, filter, map, distinct })
+const { createSubject } = rxjsSubject({ Subject, ReplaySubject, filter, map })
 
 export {
     createSubject

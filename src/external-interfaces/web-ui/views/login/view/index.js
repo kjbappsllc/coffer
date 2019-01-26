@@ -3,7 +3,8 @@ export const loginView = ({
     viewFramework: React,
     styles
 }) => ({
-    savePasswordAndLogin
+    savePasswordAndLogin,
+    label
 }) => {
     let pwRef = React.createRef()
     let confirmPwRef = React.createRef()
@@ -18,6 +19,7 @@ export const loginView = ({
                     password: pwRef.current.value, 
                     confirmPassword: confirmPwRef.current.value
                 })}>Submit</button>
+                <div>{label}</div>
             </div>
         </div>
     )

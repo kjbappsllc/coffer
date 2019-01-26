@@ -1,16 +1,17 @@
 
 export const rxjsSubject = ({
     Subject,
+    ReplaySubject,
     filter: rxjsFilter,
-    map: rxjsMap,
-    distinct
-}) => ({
-    createSubject: () => {
-        const sub = new Subject()
+    map: rxjsMap
+}) => {
+    const createProperties = ({
+        subjectType: sub
+    }) => {
         const filter = condition => cb => sub.pipe(rxjsFilter(condition)).subscribe(cb)
         const subscription = cb => sub.subscribe(cb)
         const next = val => sub.next(val)
-        const map = cb => sub.pipe( rxjsMap(cb), distinct() )
+        const map = props => cb => sub.pipe(rxjsMap(props)).subscribe(cb)
         return {
             filter,
             subscription,
@@ -18,4 +19,16 @@ export const rxjsSubject = ({
             map
         }
     }
-})
+    return {
+        createSubject: {
+            standard: () => {
+                const subjectType = new Subject()
+                return createProperties({ subjectType })
+            },
+            replay: ({ replays }) => {
+                const subjectType = new ReplaySubject(replays)
+                return createProperties({ subjectType })
+            }
+        }
+    }
+}

@@ -2,7 +2,7 @@
 export const createAddSecurePasswordUseCase = ({
     encryptPassword
 }) => ({
-    presenter: {
+    output: {
         onBeforePasswordEncrypted,
         onAfterPasswordEncrypted,
         onPasswordEncryptError
