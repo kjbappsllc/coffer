@@ -10,7 +10,7 @@ export const createWebServer = ({
         webServer: {
             start: () => {
                 const dirPath = path.resolve(__dirname, '../../../../web-build')
-                console.log("Files will be served from: ", dirPath)
+                console.log("File will be served from: ", dirPath)
                 if (!server) {
                     server = hapi.Server({
                         port,
@@ -33,6 +33,14 @@ export const createWebServer = ({
                                 index: true,
                             }
                         }
+                    });
+
+                    server.ext('onPreResponse', (req, h) => {
+                        const { response } = req;
+                        if (response.isBoom && response.output.statusCode === 404) {
+                            return h.file('index.html');
+                        }
+                        return h.continue;
                     });
 
                     return server.start().then(() => {

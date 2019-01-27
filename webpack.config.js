@@ -6,7 +6,7 @@ var CleanWebpackPlugin = require('clean-webpack-plugin')
 module.exports = {
     entry: ['@babel/polyfill', './src/external-interfaces/web-ui/index.js'],
     output: {
-        path: path.resolve(__dirname, './build/web-build'),
+        path: path.resolve(__dirname, './build/web-build/'),
         filename: 'bundle.js'
     },
     module: {

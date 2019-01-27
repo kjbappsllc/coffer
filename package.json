@@ -9,7 +9,7 @@
   "bin": "./build/proj-build/external-interfaces/cli/index.js",
   "scripts": {
     "build:prod": "npm-run-all build:proj build:web",
-    "build:test": "npm-run-all build:proj --parallel build:web:dev playground",
+    "build:dev": "npm-run-all build:proj --parallel build:web:dev playground",
     "build:proj": "babel ./src --out-dir ./build/proj-build",
     "build:web": "webpack --mode production",
     "build:web:dev": "webpack --mode development --watch --hot",
