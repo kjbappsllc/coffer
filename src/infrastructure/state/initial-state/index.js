@@ -6,8 +6,5 @@ export const createInitialState = () => ({
         pastIncomeSource: [],
         pastLocations: []
     },
-    budgets: [],
-    test: {
-        label: ''
-    }
+    budgets: []
 })
