@@ -21,16 +21,29 @@ export const styles = {
         objectFit: 'contain'
     },
     formCard: {
-        width: '350px',
+        width: '375px',
         backgroundColor: 'white'
     },
     input: {
-        marginBottom: '15px'
+        marginBottom: '15px',
+        width: '100%'
     },
     btn: {
         backgroundColor: colors.primaryColor,
         width: '100%',
         color: colors.whiteColor,
-        fontSize: '14px'
+        fontSize: '12px',
+        letterSpacing: '2px'
+    },
+    formHeader: {
+        height: '50px',
+        backgroundColor: colors.primaryColor,
+        fontSize: '24px',
+        justifyContent: 'center',
+        alignItems: 'center',
+        color: 'white'
+    },
+    formContent: {
+        padding: '25px'
     }
 }

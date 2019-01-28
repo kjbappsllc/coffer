@@ -54,7 +54,7 @@ execScript({
             script: fileOwnershipScript, exec
         })
     }).then(() => {
-        console.log("Revoked permissions ...")
+        console.log("Revoked Ownership ...")
         const permissionsScript = getPermissionsScripts({ platform, hostsPath, username }).removePermissions
         return execScript({ script: permissionsScript, exec })
     }).then(() => {

@@ -15,12 +15,15 @@ export const loginView = ({
             </div>
             <div className="flex-column" style={styles.rightPanel}>
                 <div className="flex-column card" style={styles.formCard}>
-                    <input style={styles.input} className="input" ref={pwRef} placeholder={'Password'} />
-                    <input style={styles.input} className="input" ref={confirmPwRef} placeholder={'Confirm Password'} />
-                    <button style={styles.btn} className="btn" onClick={() => savePasswordAndLogin({ 
-                        password: pwRef.current.value, 
-                        confirmPassword: confirmPwRef.current.value
-                    })}>Submit</button>
+                    <div className="flex-row" style={styles.formHeader}>Register</div>
+                    <div style={styles.formContent}>
+                        <input style={styles.input} className="input" ref={pwRef} placeholder={'Password'} />
+                        <input style={styles.input} className="input" ref={confirmPwRef} placeholder={'Confirm Password'} />
+                        <button style={styles.btn} className="btn" onClick={() => savePasswordAndLogin({
+                            password: pwRef.current.value,
+                            confirmPassword: confirmPwRef.current.value
+                        })}>SUBMIT</button>
+                    </div>
                 </div>
             </div>
         </div>
