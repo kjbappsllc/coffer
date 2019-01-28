@@ -6,7 +6,7 @@ import { styles } from './styles'
 
 export const DashboardView = connect({
     viewModel,
-    controller: () => {},
-    presenter: () => {},
-    subscribe: () => {}
+    controller: () => ({}),
+    presenter: () => ({}),
+    subscribe: () => ({})
 })({ View: dashboardView({ viewFramework, styles }) })
