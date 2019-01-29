@@ -43,5 +43,9 @@ export const styles = {
     },
     formContent: {
         padding: '25px'
+    },
+    inputContainer: {
+        marginTop: '15px',
+        marginBottom: '15px'
     }
 }

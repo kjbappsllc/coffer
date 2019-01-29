@@ -4,5 +4,5 @@ export const createDecryptPassword = ({
 }) => ({
     encryptedPass
 }) => new Promise((resolve) => {
-    resolve(crypto.decrypt('123', encryptedPass))
+    resolve(crypto.decrypt('-yesthisisapublicpwsalt-', encryptedPass))
 })

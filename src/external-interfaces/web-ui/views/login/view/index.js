@@ -17,8 +17,10 @@ export const loginView = ({
                 <div className="flex-column card" style={styles.formCard}>
                     <div className="flex-row" style={styles.formHeader}>Register</div>
                     <div style={styles.formContent}>
-                        <input style={styles.input} className="input" ref={pwRef} placeholder={'Password'} />
-                        <input style={styles.input} className="input" ref={confirmPwRef} placeholder={'Confirm Password'} />
+                        <div style={styles.inputContainer}>
+                            <input type='password' style={styles.input} className="input" ref={pwRef} placeholder={'Password'} />
+                            <input type='password' style={styles.input} className="input" ref={confirmPwRef} placeholder={'Confirm Password'} />
+                        </div>
                         <button style={styles.btn} className="btn" onClick={() => savePasswordAndLogin({
                             password: pwRef.current.value,
                             confirmPassword: confirmPwRef.current.value
