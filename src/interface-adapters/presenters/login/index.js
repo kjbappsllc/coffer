@@ -7,7 +7,7 @@ export const createLoginPresenter = ({
 }) => {
     let viewModel = { ...loginViewModel }
     const { subscribeToState } = state
-    let unsubscribe = subscribeToState({
+    let subscription = subscribeToState({
         selector: () => viewModel,
         cb: () => {
             console.log("Login Presenter Received State Update ...")
@@ -16,18 +16,18 @@ export const createLoginPresenter = ({
     })
     return {
         output: {
-            onBeforePasswordEncrypted: () => {
-                console.log("Password is about to be encrypted")
+            onBeforeRegister: () => {
+                console.log("User is about to be registered")
             },
-            onAfterPasswordEncrypted: ({ encryptedPass }) => {
-                console.log("Password was encrypted: ", encryptedPass)
+            onAfterRegister: ({ userInfo }) => {
+                console.log("User successfuly registered: ", userInfo)
             },
-            onPasswordEncryptError: ({ err }) => {
-                console.log("Password encryption error: ", err.message)
+            onRegisterError: ({ err }) => {
+                console.log("User Register error: ", err.message)
             }
         },
         unsubscribeFromState: () => {
-            unsubscribe()
+            subscription.unsubscribe()
         }
     }
 }

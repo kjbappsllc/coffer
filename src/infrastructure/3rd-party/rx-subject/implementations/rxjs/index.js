@@ -20,15 +20,13 @@ export const rxjsSubject = ({
         }
     }
     return {
-        createSubject: {
-            standard: () => {
-                const subjectType = new Subject()
-                return createProperties({ subjectType })
-            },
-            replay: ({ replays }) => {
-                const subjectType = new ReplaySubject(replays)
-                return createProperties({ subjectType })
-            }
+        standard: () => {
+            const subjectType = new Subject()
+            return createProperties({ subjectType })
+        },
+        replay: ({ replays }) => {
+            const subjectType = new ReplaySubject(replays)
+            return createProperties({ subjectType })
         }
     }
 }

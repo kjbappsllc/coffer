@@ -1,12 +1,14 @@
 
 export const createLoginController = ({
-    addSecurePasswordUseCase
+    registerUserUseCase,
+    userGateway
 }) => ({
     output
 }) => ({
     savePasswordAndLogin: ({ password, confirmPassword }) => {
-        addSecurePasswordUseCase({ 
-            output
+        registerUserUseCase({ 
+            output,
+            userGateway
         }).execute({ password, confirmPassword })
     }
 })

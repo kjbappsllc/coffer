@@ -1,2 +1,4 @@
 
-export const loginViewModel = {}
+export const loginViewModel = {
+    username: ''
+}

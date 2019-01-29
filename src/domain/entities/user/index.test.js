@@ -1,13 +1,13 @@
-import { createUserProfileEntity } from "."
+import { createUserEntity } from "."
 import { expect } from 'chai'
 
 
-describe("DOMAIN:ENTITY:user-profile", () => {
+describe("DOMAIN:ENTITY:user", () => {
     const validate = ({ userProfile: up }) => up
-    const { userProfile } = createUserProfileEntity({ validate })
+    const { user } = createUserEntity({ validate })
    
     it('Should return user profile object with correct default values and keys', (done) => {
-        const profile = userProfile.init({ name: 'test' })
+        const profile = user.init({ name: 'test' })
         expect(profile.name).to.be.equal('test')
         expect(profile.balance).to.be.equal(0)
         expect(profile.pastLocations).to.be.eql([])
@@ -18,7 +18,7 @@ describe("DOMAIN:ENTITY:user-profile", () => {
 
     it('Should return user profile object with correct keys when passed in', (done) => {
 
-        const profile = userProfile.init({
+        const profile = user.init({
             name: 'test',
             balance: 1000,
             pastLocations: ['target'],

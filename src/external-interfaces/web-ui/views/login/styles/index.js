@@ -12,8 +12,8 @@ export const styles = {
     rightPanel: {
         backgroundColor: colors.whiteColor,
         flex: 2,
-        justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        paddingTop: '100px'
     },
     logo: {
         width: '60%',
@@ -29,11 +29,9 @@ export const styles = {
         width: '100%'
     },
     btn: {
-        backgroundColor: colors.primaryColor,
         width: '100%',
-        color: colors.whiteColor,
         fontSize: '12px',
-        letterSpacing: '2px'
+        letterSpacing: '2px',
     },
     formHeader: {
         height: '50px',

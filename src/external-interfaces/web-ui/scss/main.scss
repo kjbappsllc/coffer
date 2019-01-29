@@ -41,6 +41,17 @@ html, body, #root {
 .btn {
     border-radius: 5px;
     min-height: 40px;
+    outline: none;
+    border: 0px solid white;
+    background-color: $primary-color;
+    color: white;
+    transition-duration: 0.3s;
+}
+
+.btn:hover {
+    background-color: white;
+    border: 1px solid $primary-color;
+    color: $primary-color
 }
 
 //Util classes

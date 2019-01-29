@@ -1,11 +1,14 @@
 
-export const createAddSecurePasswordUseCase = ({
+export const createRegisterUserUseCase = ({
     encryptPassword
 }) => ({
     output: {
-        onBeforePasswordEncrypted,
-        onAfterPasswordEncrypted,
-        onPasswordEncryptError
+        onBeforeRegister,
+        onAfterRegister,
+        onRegisterError
+    },
+    userGateway: {
+        register
     }
 }) => ({
     execute: ({
@@ -17,15 +20,17 @@ export const createAddSecurePasswordUseCase = ({
                 throw new Error("Passwords do not match")
             }
         } catch (err) {
-            return onPasswordEncryptError({ err, pass: null })
+            return onRegisterError({ err, pass: null })
         }
-        onBeforePasswordEncrypted()
+        onBeforeRegister()
         return encryptPassword({
             pass
         }).then((encryptedPass) => {
-            return onAfterPasswordEncrypted({ encryptedPass })
+            return register({ encryptedPass })
+        }).then(userInfo => {
+            return onAfterRegister({ userInfo })
         }).catch((err) => {
-            return onPasswordEncryptError({ err, pass })
+            return onRegisterError({ err, pass })
         })
     }
 

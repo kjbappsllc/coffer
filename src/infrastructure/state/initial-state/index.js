@@ -1,6 +1,6 @@
 
 export const createInitialState = () => ({
-    userProfile: {
+    user: {
         name: '',
         balance: 0,
         pastIncomeSource: [],

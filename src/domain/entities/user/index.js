@@ -1,13 +1,13 @@
 
-export const createUserProfileEntity = ({ validate }) => ({
-    userProfile: {
+export const createUserEntity = ({ validate }) => ({
+    user: {
         init: ({
             name,
             balance = 0,
             pastLocations = [],
             incomeSources = []
         }) => validate({
-            userProfile: {
+            user: {
                 name,
                 balance,
                 incomeSources,

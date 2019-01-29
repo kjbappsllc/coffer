@@ -1,8 +1,11 @@
+import { accessTokenManager } from '../../../security'
 import { createBudgetRoutes } from './budget'
+import { createUserRoutes } from './user'
 
 export const createRoutes = ({
-    dbDriver,
-    collections
+    collections,
+    dbDriver
 }) => [
-    ...createBudgetRoutes({ dbDriver, budgetCollectionName: collections.budget })
+    ...createBudgetRoutes({ dbDriver, budgetCollectionName: collections.budget }),
+    ...createUserRoutes({ accessTokenManager })
 ]

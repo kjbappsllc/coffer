@@ -4,7 +4,7 @@ import { validateBudget } from './budget'
 import { validateTransaction as validateT } from './transaction'
 import { validateFund } from './fund'
 import { validateGroup } from './group'
-import { validateUserProfile } from './user-profile'
+import { validateUser } from './user'
 
 const validateTransaction = validateT({ isDate })
 
@@ -14,5 +14,5 @@ export {
     validateTransaction,
     validateFund,
     validateGroup,
-    validateUserProfile 
+    validateUser
 }
