@@ -14,7 +14,7 @@ export const createPrivateRoute = ({
                 console.error('Private route must include condition and redirect url')
                 return <routeConfig.component {...props} routes={routeConfig.routes} />
             }
-            return routeConfig.condition ? 
+            return routeConfig.condition() ? 
             <routeConfig.component {...props} routes={routeConfig.routes} /> :
             <Redirect to={{ pathname: routeConfig.redirectPath, state: {from: props.location }}} />
         }}

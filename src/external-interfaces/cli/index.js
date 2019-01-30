@@ -4,7 +4,8 @@ import chalk from 'chalk'
 import { exec } from 'child_process'
 import path from 'path'
 
-import { getHostsPath, getCliColors, getFileOwnershipScripts, getPermissionsScripts, getPortProxyScripts, execScript } from "./utils";
+import { getHostsPath, getFileOwnershipScripts, getPermissionsScripts, getPortProxyScripts, execScript } from "../../infrastructure/scripts"
+import { getCliColors } from './utils'
 import { isCofferSetup, setupHostsConfig } from './setup'
 import { dbRestAPI, webServer } from '../../infrastructure/servers'
 

@@ -3,7 +3,10 @@ export const createLoginPresenter = ({
     updateView
 }) => ({
     viewModel: loginViewModel,
-    state
+    state,
+    coordinator: {
+        goToDashboardPage
+    }
 }) => {
     let viewModel = { ...loginViewModel }
     const { subscribeToState } = state
@@ -21,6 +24,9 @@ export const createLoginPresenter = ({
             },
             onAfterRegister: ({ userInfo }) => {
                 console.log("User successfuly registered: ", userInfo)
+                localStorage.setItem("token", userInfo.token)
+                console.log(localStorage.getItem("token"))
+                goToDashboardPage()
             },
             onRegisterError: ({ err }) => {
                 console.log("User Register error: ", err.message)

@@ -18,7 +18,7 @@ const { budget } = createBudgetEntity({ validate: validateBudget, createUUID: cr
 const { transaction } = createTransactionEntity({ validate: validateTransaction })
 const { fund } = createFundEntity({ validate: validateFund })
 const { group } = createGroupEntity({ validate: validateGroup })
-const { user } = createUserEntity({ validate: validateUser })
+const { user } = createUserEntity({ validate: validateUser, createUUID: createGuid })
 
 export {
     incomeSource,

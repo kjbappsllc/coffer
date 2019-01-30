@@ -1,17 +1,25 @@
 
-export const createUserEntity = ({ validate }) => ({
+export const createUserEntity = ({ 
+    validate,
+    createUUID
+}) => ({
     user: {
         init: ({
             name,
             balance = 0,
             pastLocations = [],
-            incomeSources = []
+            incomeSources = [],
+            budgets = [],
+            transactions = []
         }) => validate({
             user: {
                 name,
                 balance,
                 incomeSources,
-                pastLocations
+                pastLocations,
+                budgets,
+                transactions,
+                _id: createUUID()
             }
         })
     }

@@ -1,7 +1,7 @@
 
 export const createBudgetRoutes = ({
     dbDriver,
-    budgetCollectionName: collection
+    collectionName: collection
 }) => {
     return [
         {

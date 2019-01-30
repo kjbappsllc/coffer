@@ -8,7 +8,7 @@ export const createAcessTokenManager = ({
             payload
         }) => new Promise((resolve, reject) => {
             jwt.sign(payload, JWT_SECRET_KEY, {
-                expiresIn: '10s'
+                expiresIn: 86400
             }, (err, token) => {
                 if (err) {
                     return reject(err)

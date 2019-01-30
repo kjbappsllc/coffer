@@ -6,7 +6,8 @@ export const createConnect =  ({
     viewModel,
     controller,
     subscribe,
-    presenter
+    presenter,
+    coordinator = ({ history }) => ({})
 }) => ({
     View
 }) => {
@@ -17,10 +18,11 @@ export const createConnect =  ({
         }
 
         componentDidMount() {
-            const { output, unsubscribeFromState } = presenter({ viewModel, state: this.context })
-            const controllerInterface = controller({ output })
+            const iCoordinator = coordinator({ history: this.props.history })
+            const { output, unsubscribeFromState } = presenter({ viewModel, state: this.context, coordinator: iCoordinator })
+            const iController = controller({ output })
             this.subscription = subscribe(newViewModel => {
-                const newState = { ...newViewModel, ...controllerInterface }
+                const newState = { ...newViewModel, ...iController }
                 this.setState(newState)
             })
             this.cleanUp = () => {
