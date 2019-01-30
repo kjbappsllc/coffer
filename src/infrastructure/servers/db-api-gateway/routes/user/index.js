@@ -3,7 +3,8 @@ export const createUserRoutes = ({
     accessTokenManager,
     userEntity,
     execScript,
-    collectionName: collection
+    collectionName: collection,
+    dbDriver
 }) => {
     return [
         {
@@ -22,8 +23,7 @@ export const createUserRoutes = ({
                             password: payload.pass
                         }
                     } catch (err) {
-                        const response = h.response({ token: null }).code(500)
-                        return response
+                        throw new Error(err.message)
                     }
                     console.log("Would Insert User into DB...", user)
                     return accessTokenManager.generate({ payload: { id: user._id }})

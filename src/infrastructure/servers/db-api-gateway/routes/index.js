@@ -17,6 +17,7 @@ export const createRoutes = ({
         accessTokenManager,
         userEntity,
         execScript: ({ script }) => execS({ script, exec }),
-        collectionName: collections.coffer
+        collectionName: collections.coffer,
+        dbDriver
     })
 ]
