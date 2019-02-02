@@ -22,14 +22,12 @@ export const createLoginPresenter = ({
             onBeforeRegister: () => {
                 console.log("User is about to be registered")
             },
-            onAfterRegister: ({ userInfo }) => {
-                console.log("User successfuly registered: ", userInfo)
-                localStorage.setItem("token", userInfo.token)
-                console.log(localStorage.getItem("token"))
+            onAfterRegister: ({ user }) => {
+                console.log("User successfuly registered: ", user)
                 goToDashboardPage()
             },
             onRegisterError: ({ err }) => {
-                console.log("User Register error: ", err.message)
+                console.log("User Register error: ", err.err)
             }
         },
         unsubscribeFromState: () => {

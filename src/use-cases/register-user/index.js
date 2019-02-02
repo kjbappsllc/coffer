@@ -27,8 +27,8 @@ export const createRegisterUserUseCase = ({
             pass
         }).then((encryptedPass) => {
             return register({ encryptedPass })
-        }).then(userInfo => {
-            return onAfterRegister({ userInfo })
+        }).then(user => {
+            return onAfterRegister({ user })
         }).catch((err) => {
             return onRegisterError({ err, pass })
         })

@@ -12,12 +12,13 @@ export const createUserGateway = ({
                 },
                 body: JSON.stringify({ pass: encryptedPass })
             }).then(res => {
-                if (res.status !== 200) {
-                    return reject(new Error(res.statusText))
-                }
                 return res.json()
-            }).then(token => {
-                resolve(token)
+            }).then(data => {
+                if( !data.token ) {
+                    return reject(data)
+                }
+                localStorage.setItem('token', data.token)
+                resolve({ user: data })
             }).catch(err => {
                 console.log(err.message)
             })
