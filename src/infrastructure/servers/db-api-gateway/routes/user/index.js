@@ -4,13 +4,15 @@ export const createUserRoutes = ({
     userEntity,
     execScript,
     collectionName: collection,
-    dbDriver
+    dbDriver,
+    decryptPassword
 }) => {
     return [
         {
             method: 'POST',
             path: '/users/register',
             handler: (request, h) => {
+                console.log("Request For Register")
                 let user
                 const payload = request.payload
                 return dbDriver.find({ 
@@ -20,7 +22,7 @@ export const createUserRoutes = ({
                     if (res.length === 0) {
                         return execScript({ script: 'whoami' })
                     }
-                    throw new Error("A user already exists, delete account if you want to start over")
+                    throw new Error("A user already exists")
                 }).then((name) => {
                     try {
                         user = { ...userEntity.init({ name }) }
@@ -48,7 +50,24 @@ export const createUserRoutes = ({
             method: 'POST',
             path: '/users/login',
             handler: (request, h) => {
-                
+                console.log("Request For Login")
+                let user
+                const payload = request.payload
+                return dbDriver.find({ 
+                    collection, 
+                    doc: { user: {$exists: true} } 
+                }).then((users) => {
+                    if (res.length === 0) {
+                        throw new Error("There is no user registered")
+                    }
+                    return res.user
+                }).then(user => {
+                    console.log(user)
+                }).catch(err => {
+                    console.error(err.message)
+                    const response = h.response({ token: null, err: err.message }).code(500)
+                    return response
+                })
             }
         }
     ]

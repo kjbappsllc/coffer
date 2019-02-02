@@ -1,5 +1,5 @@
 import viewFramework from 'react'
-import { BrowserRouter as routerComp } from 'react-router-dom'
+import { BrowserRouter as routerComp, Switch as switchComp } from 'react-router-dom'
 import * as views from '../views'
 import { privateRoute, publicRoute, provider } from '../utils'
 import { state } from '../../../infrastructure/state'
@@ -15,6 +15,7 @@ export const App = () => {
         privateRoute,
         routes,
         provider,
+        switchComp,
         state
     })
 }

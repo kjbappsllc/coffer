@@ -4,9 +4,11 @@ export const createPrivateRoute = ({
     routeComp: Route,
     redirectComp: Redirect
 }) => ({
-    routeConfig
+    routeConfig,
+    key = null
 }) => (
     <Route
+        key = {key}
         path={routeConfig.path}
         exact={routeConfig.exact || false}
         render={props => {

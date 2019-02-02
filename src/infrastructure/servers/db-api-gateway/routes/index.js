@@ -1,4 +1,4 @@
-import { accessTokenManager } from '../../../security'
+import { accessTokenManager, decryptPassword } from '../../../security'
 import { execScript as execS } from '../../../scripts'
 import { exec } from 'child_process'
 import { user as userEntity } from '../../../../domain/entities'
@@ -18,6 +18,7 @@ export const createRoutes = ({
         userEntity,
         execScript: ({ script }) => execS({ script, exec }),
         collectionName: collections.coffer,
-        dbDriver
+        dbDriver,
+        decryptPassword
     })
 ]

@@ -4,6 +4,11 @@ export const createRoutes = ({
 }) => {
     return [
         {
+            path: '/login',
+            exact: true,
+            component: views.LoginView
+        },
+        {
             path: '/',
             exact: true,
             component: views.DashboardView,
@@ -14,11 +19,6 @@ export const createRoutes = ({
                 return token != void 0
             },
             redirectPath: '/login'
-        },
-        {
-            path: '/login',
-            exact: true,
-            component: views.LoginView
         }
     ]
 }

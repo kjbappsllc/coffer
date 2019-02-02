@@ -1,28 +1,20 @@
 import colors from '../../../scss/colors.scss'
 
 export const styles = {
-    leftPanel: {
-        backgroundColor: colors.primaryColor,
-        flex: 1,
-        minWidth: '150px',
-        maxWidth: '350px',
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    rightPanel: {
-        backgroundColor: colors.whiteColor,
-        flex: 2,
-        alignItems: 'center',
-        paddingTop: '100px'
-    },
     logo: {
-        width: '60%',
+        width: '35%',
         height: 'auto',
         objectFit: 'contain'
     },
+    logoContainer: {
+        paddingTop: '20px',
+        marginBottom: '20px'
+    },
     formCard: {
-        width: '375px',
         backgroundColor: 'white'
+    },
+    formAuth: {
+        width: '375px'
     },
     input: {
         marginBottom: '15px',
@@ -47,5 +39,16 @@ export const styles = {
     inputContainer: {
         marginTop: '15px',
         marginBottom: '15px'
+    },
+    infoContainer: {
+        marginTop: '25px',
+        fontSize: '14px',
+        padding: '14px'
+    },
+    linkBtn: {
+        outline: 'none',
+        border: 'none',
+        fontSize: '14px',
+        padding: '0px 10px'
     }
 }

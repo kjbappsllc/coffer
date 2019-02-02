@@ -3,11 +3,8 @@ import { encryptPassword } from '../infrastructure/security'
 
 import { createAddBudgetUseCase } from './add-budget'
 import { createRegisterUserUseCase } from './register-user'
+import { createLoginUserUseCase } from './login-user'
 
-const addBudgetUseCase = createAddBudgetUseCase({ budgetEntity })
-const registerUserUseCase = createRegisterUserUseCase({ encryptPassword })
-
-export {
-    addBudgetUseCase,
-    registerUserUseCase
-}
+export const addBudgetUseCase = createAddBudgetUseCase({ budgetEntity })
+export const registerUserUseCase = createRegisterUserUseCase({ encryptPassword })
+export const loginUserUseCase = createLoginUserUseCase({ encryptPassword })
