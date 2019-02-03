@@ -42,6 +42,7 @@ export const createLoginPresenter = ({
             },
             onAfterLogin: ({ user }) => {
                 console.log("User successfully logged in: ", user)
+                goToDashboardPage()
             },
             onLoginError: ({ err }) => {
                 console.log("User Login error: ", err.err)

@@ -38,6 +38,8 @@ export const createUserGateway = ({
                 if( !data.token ) {
                     return reject(data)
                 }
+                localStorage.setItem('token', data.token)
+                resolve({ user: data })
             }).catch(err => {
                 console.log(err.message)
             })

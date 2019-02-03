@@ -25,7 +25,7 @@ export const createUserRoutes = ({
                     throw new Error("A user already exists")
                 }).then((name) => {
                     try {
-                        user = { ...userEntity.init({ name }) }
+                        user = { ...userEntity.init({ name: name.trim() }) }
                     } catch (err) {
                         throw new Error(err.message)
                     }
@@ -56,13 +56,36 @@ export const createUserRoutes = ({
                 return dbDriver.find({ 
                     collection, 
                     doc: { user: {$exists: true} } 
-                }).then((users) => {
+                }).then((res) => {
                     if (res.length === 0) {
                         throw new Error("There is no user registered")
                     }
-                    return res.user
-                }).then(user => {
-                    console.log(user)
+                    user = res[0].user
+                }).then(() => {
+                    return new Promise((resolve) => {
+                        let userPwAttempt, storedPW
+                        decryptPassword({ 
+                            encryptedPass: payload.pass
+                        }).then(pass => {
+                            userPwAttempt = pass
+                            return decryptPassword({ 
+                                encryptedPass: user.password
+                            })
+                        }).then(pass => {
+                            storedPW = pass
+                        }).then(() => {
+                            return resolve(userPwAttempt === storedPW)
+                        })
+                    })
+                }).then(isCorrectPw => {
+                    if(isCorrectPw) {
+                        return accessTokenManager.generate({ payload: { id: user._id }})
+                    }
+                    throw new Error("Incorrect password")
+                }).then(token => {
+                    delete user.password
+                    const response = h.response({ ...user, token }).code(200)
+                    return response
                 }).catch(err => {
                     console.error(err.message)
                     const response = h.response({ token: null, err: err.message }).code(500)

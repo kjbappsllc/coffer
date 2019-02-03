@@ -17,14 +17,21 @@ export const loginView = ({
     const pwRef = React.createRef()
     const confirmPwRef = React.createRef()
     const isLogin = mode === 'login'
-    const linkTextFunc = isLogin ? switchToRegister : switchToLogin
+    const linkTextFunc = isLogin ? 
+    () => {
+        pwRef.current.value = ''
+        switchToRegister()
+     } : 
+    () => {
+        pwRef.current.value = ''
+        switchToLogin()
+    }
     const sumbitFunc = isLogin ? 
     () => handleLogin({ password: pwRef.current.value }) :
     () => handleRegister({
         password: pwRef.current.value,
         confirmPassword: confirmPwRef.current.value
     })
-
     return (
         <div className="fill-parent flex-column column-center">
             <div className="flex-column column-center" style={styles.logoContainer}>

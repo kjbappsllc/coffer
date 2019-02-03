@@ -8,7 +8,7 @@ export const createDbRestService = ({
 }) => {
     let server
     const collections = Object.freeze({ coffer: 'Coffer' })
-    const folderPath = path.resolve(__dirname, '../../database-files')
+    const folderPath = path.resolve(__dirname, '../../../../../database')
     return {
         dbRestAPI: {
             start: () => {
