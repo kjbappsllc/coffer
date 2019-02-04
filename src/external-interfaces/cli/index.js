@@ -40,7 +40,7 @@ execScript({
             })
         } else {
             console.log(`You are already setup with ${orange('coffer')}.`)
-            console.log(`Vist ${orange('coffer.co')} in your browser for the application!`)
+            console.log(`Vist ${orange('coffer.io')} in your browser for the application!`)
             process.exit(0)
         }
     }).then(() => {

@@ -27,7 +27,7 @@ export const styles = {
     },
     formHeader: {
         height: '50px',
-        backgroundColor: colors.primaryColor,
+        backgroundColor: '#242939',
         fontSize: '16px',
         letterSpacing: '2px',
         justifyContent: 'center',
@@ -50,6 +50,7 @@ export const styles = {
         outline: 'none',
         border: 'none',
         fontSize: '14px',
-        padding: '0px 10px'
+        padding: '0px 10px',
+        backgroundColor: 'transparent'
     }
 }

@@ -11,9 +11,12 @@ export const homeView = ({
         publicRoute({ routeConfig, key: i })
     )
     return (
-        <div className="fill-parent flex-row">
-            <div>
-                Coffer Home Page Under Development
+        <div className="fill-parent flex-row" style={styles.main}>
+            <div style={styles.nav}>
+                <div className="flex-column column-center" style={styles.header}>
+                    <img style={styles.logo} src={require('../../../resources/images/logo.png')} />
+                    <hr />
+                </div>
             </div>
             <div>
                 <Switch>
