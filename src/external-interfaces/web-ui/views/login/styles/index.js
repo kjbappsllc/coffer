@@ -14,7 +14,7 @@ export const styles = {
         backgroundColor: 'white'
     },
     formAuth: {
-        width: '375px'
+        width: '355px'
     },
     input: {
         marginBottom: '15px',
@@ -28,7 +28,8 @@ export const styles = {
     formHeader: {
         height: '50px',
         backgroundColor: colors.primaryColor,
-        fontSize: '24px',
+        fontSize: '16px',
+        letterSpacing: '2px',
         justifyContent: 'center',
         alignItems: 'center',
         color: 'white'

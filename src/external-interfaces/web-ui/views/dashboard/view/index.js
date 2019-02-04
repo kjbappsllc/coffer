@@ -3,7 +3,7 @@ export const dashboardView = ({
     viewFramework: React,
     styles
 }) => ({
-    //props here
-}) => (
-    <div style={{ backgroundColor: 'blue' }}>Coffer Dashboard Page Under Development</div>
-)
+    // input dependecies here
+}) => {
+    return (<div style={{ backgroundColor: 'blue' }}>Coffer Dashboard Page Under Development</div>)
+}

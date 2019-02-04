@@ -3,7 +3,7 @@ export const loginViewModel = {
     mode: 'login',
     err: false,
     errMsg: '',
-    headerText: 'Login',
+    headerText: 'LOGIN',
     infoText: 'New to Coffer?',
     linkText: 'Register'
 }

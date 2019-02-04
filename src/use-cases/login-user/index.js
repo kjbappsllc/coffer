@@ -14,6 +14,13 @@ export const createLoginUserUseCase = ({
     execute: ({
         password: pass
     }) => {
+        try {
+            if(!pass){
+                throw new Error("Password not provided")
+            }
+        } catch (err) {
+            onLoginError({ err: { err: err.message }})
+        }
         onBeforeLogin()
         return encryptPassword({
             pass
@@ -22,7 +29,7 @@ export const createLoginUserUseCase = ({
         }).then(user => {
             return onAfterLogin({ user })
         }).catch((err) => {
-            return onLoginError({ err, pass })
+            return onLoginError({ err })
         })
     }
 

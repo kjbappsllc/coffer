@@ -12,7 +12,7 @@ export const createConnectFn = ({
         }
         return new Promise((resolve, reject) => {
             urls.forEach((collection) => {
-                const path = `${folderPath}/${collection}.json`
+                const path = `${folderPath}/${collection}.db`
                 if (!fs.existsSync(path)) {
                     fs.appendFile(path, '', (err) => {
                         if (err) {

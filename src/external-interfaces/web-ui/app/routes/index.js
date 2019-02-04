@@ -10,15 +10,21 @@ export const createRoutes = ({
         },
         {
             path: '/',
-            exact: true,
-            component: views.DashboardView,
+            component: views.HomeView,
             private: true,
             condition: () => {
                 const token = localStorage.getItem('token')
-                console.log('The token for the page is:',token)
+                console.log('The token for the page is:', token)
                 return token != void 0
             },
-            redirectPath: '/login'
+            redirectPath: '/login',
+            routes: [
+                {
+                    path: '/',
+                    exact: true,
+                    component: views.DashboardView
+                }
+            ]
         }
     ]
 }

@@ -52,7 +52,7 @@ export const createLoginPresenter = ({
                     mode: 'register',
                     err: false,
                     errMsg: '',
-                    headerText: 'Register',
+                    headerText: 'REGISTER',
                     infoText: 'Already registered?',
                     linkText: 'Login'
                 }))
