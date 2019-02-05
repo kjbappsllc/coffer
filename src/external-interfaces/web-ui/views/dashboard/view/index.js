@@ -5,5 +5,5 @@ export const dashboardView = ({
 }) => ({
     // input dependecies here
 }) => {
-    return (<div style={{ backgroundColor: 'blue' }}>Coffer Dashboard Page Under Development</div>)
+    return (<div></div>)
 }

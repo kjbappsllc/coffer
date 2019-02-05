@@ -2,7 +2,7 @@ import colors from '../../../scss/colors.scss'
 
 export const styles = {
     main: {
-        padding: '30px 24px'
+        padding: '30px'
     },
     nav: {
         borderRadius: '5px',
@@ -10,15 +10,28 @@ export const styles = {
         overflow: 'hidden',
         backgroundColor: '#242939',
         minWidth: '280px',
-        width: '280px',
-        padding: '32px'
+        width: '280px'
     },
     logo: {
-        width: '30%',
+        width: '15%',
+        margin: '16px 5px 12px 12px',
         height: 'auto',
         objectFit: 'contain'
     },
     header: {
-        height: '10%'
+        height: '70px',
+        borderBottom: '1px solid #2e3449'
+    },
+    titleText: {
+        fontSize: '16px',
+        color: 'white',
+        fontWeight: 'bold',
+        letterSpacing: '2px'
+    },
+    menuBtn: {
+        justifyContent: 'flex-end',
+        color: '#2e3449',
+        flex: 1,
+        paddingRight: '16px'
     }
 }

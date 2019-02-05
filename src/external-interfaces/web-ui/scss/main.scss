@@ -65,6 +65,12 @@ body {
     color: #242939
 }
 
+//hr
+.hr {
+    width: 100%;
+    opacity: 0.1;
+    height: '0.1px'
+}
 //Util classes
 
 .fill-parent {
@@ -92,4 +98,8 @@ body {
 
 .row-center {
     justify-content: center;
+}
+
+.row-center-v {
+    align-items: center;
 }
