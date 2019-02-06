@@ -22,6 +22,13 @@ export const homeView = ({
                         </div>
                     </div>
                 </div>
+                <div className="flex-column">
+                    <div className="flex-row row-center-v">
+                        <i className="fas fa-chart-bar" style={styles.icon}/>
+                        <div style={styles.navLinkText}>Dashboard</div>
+                        <i className="fas fa-angle-right" style={styles.icon}/>
+                    </div>
+                </div>
             </div>
             <div>
                 <Switch>

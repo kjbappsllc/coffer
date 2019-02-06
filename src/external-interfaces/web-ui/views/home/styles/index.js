@@ -30,8 +30,15 @@ export const styles = {
     },
     menuBtn: {
         justifyContent: 'flex-end',
-        color: '#2e3449',
+        color: '#687393',
+        fontStyle: 'italic',
         flex: 1,
         paddingRight: '16px'
+    },
+    icon: {
+        color: '#687393'
+    },
+    navLinkText: {
+        color: '#c0c4d1'
     }
 }
