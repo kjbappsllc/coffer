@@ -1,5 +1,5 @@
 import viewFramework from 'react'
-import { Switch as switchComp } from 'react-router-dom'
+import { Switch as switchComp, NavLink as navLinkComp } from 'react-router-dom'
 import { connect, publicRoute } from '../../utils'
 import { homeViewModel as viewModel } from './view-model'
 import { homeView } from './view'
@@ -14,5 +14,6 @@ export const HomeView = connect({
     viewFramework, 
     styles, 
     publicRoute, 
-    switchComp 
+    switchComp,
+    navLinkComp
 })})

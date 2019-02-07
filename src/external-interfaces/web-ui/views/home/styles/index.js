@@ -35,10 +35,23 @@ export const styles = {
         flex: 1,
         paddingRight: '16px'
     },
-    icon: {
-        color: '#687393'
+    iconMain: {
+        flex: '0 0 35px',
+        fontSize: '17px'
+    },
+    iconRight: {
+        flex: '0 0 20px',
+        fontSize: '12px',
+        justifyContent: 'flex-end'
     },
     navLinkText: {
-        color: '#c0c4d1'
+        flex: 1,
+        fontSize: '14px',
+        letterSpacing: '1px',
+        fontWeight: '900'
+    },
+    navContainer: {
+        padding: '15px 10px',
+        margin: '15px 0px'
     }
 }

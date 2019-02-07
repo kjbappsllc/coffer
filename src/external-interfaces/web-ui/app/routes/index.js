@@ -22,7 +22,29 @@ export const createRoutes = ({
                 {
                     path: '/',
                     exact: true,
-                    component: views.DashboardView
+                    component: views.DashboardView,
+                    meta: {
+                        name: 'Dashboard',
+                        icon: 'fas fa-chart-bar'
+                    }
+                },
+                {
+                    path: '/budgets',
+                    exact: true,
+                    component: () => (null),
+                    meta: {
+                        name: 'Budgets',
+                        icon: 'fas fa-file-invoice-dollar'
+                    }
+                },
+                {
+                    path: '/transaction-history',
+                    exact: true,
+                    component: () => (null),
+                    meta: {
+                        name: 'Transaction History',
+                        icon: 'fas fa-history'
+                    }
                 }
             ]
         }

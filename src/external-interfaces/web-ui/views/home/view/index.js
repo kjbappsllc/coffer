@@ -3,7 +3,8 @@ export const homeView = ({
     viewFramework: React,
     styles,
     publicRoute,
-    switchComp: Switch
+    switchComp: Switch,
+    navLinkComp: NavLink
 }) => ({
     routes
 }) => {
@@ -22,12 +23,22 @@ export const homeView = ({
                         </div>
                     </div>
                 </div>
-                <div className="flex-column">
-                    <div className="flex-row row-center-v">
-                        <i className="fas fa-chart-bar" style={styles.icon}/>
-                        <div style={styles.navLinkText}>Dashboard</div>
-                        <i className="fas fa-angle-right" style={styles.icon}/>
-                    </div>
+                <div style={styles.navContainer} className="flex-column">
+                    {
+                        routes.map((config, i) => (
+                            <NavLink
+                                exact
+                                to={config.path} 
+                                key={i}
+                                activeClassName='nav-row-active' 
+                                className="flex-row row-center-v nav-row"
+                            >
+                                <i className={config.meta.icon + " icon"} style={styles.iconMain}/>
+                                <div className="link" style={styles.navLinkText}>{config.meta.name}</div>
+                                <i className="fas fa-angle-right flex icon" style={styles.iconRight}/>
+                            </NavLink>
+                        ))
+                    }
                 </div>
             </div>
             <div>
