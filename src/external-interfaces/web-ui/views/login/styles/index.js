@@ -1,4 +1,3 @@
-import colors from '../../../scss/colors.scss'
 
 export const styles = {
     logo: {

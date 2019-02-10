@@ -41,7 +41,7 @@ export const homeView = ({
                     }
                 </div>
             </div>
-            <div>
+            <div style={styles.contentContainer}>
                 <Switch>
                     {routeComponents}
                 </Switch>

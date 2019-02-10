@@ -1,4 +1,3 @@
-import colors from '../../../scss/colors.scss'
 
 export const styles = {
     main: {
@@ -53,5 +52,9 @@ export const styles = {
     navContainer: {
         padding: '15px 10px',
         margin: '15px 0px'
+    },
+    contentContainer: {
+        padding: '20px 0px 20px 25px',
+        flex: 1
     }
 }
