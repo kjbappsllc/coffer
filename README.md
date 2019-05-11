@@ -1,0 +1,3 @@
+# Coffer
+
+## Budget application
