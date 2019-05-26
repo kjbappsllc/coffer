@@ -1,5 +1,5 @@
 import { registerUserUseCase, loginUserUseCase } from '../../use-cases'
-import { userGateway } from '../../infrastructure/gateways'
+import { userGateway } from '../gateways'
 import { createLoginController } from './login'
 
 const loginController = createLoginController({ 
