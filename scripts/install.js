@@ -6,7 +6,7 @@ import path from 'path'
 
 import { getHostsPath, getFileOwnershipScripts, getPermissionsScripts, getPortProxyScripts, execScript } from "../../infrastructure/scripts"
 import { getCliColors } from './utils'
-import { isCofferSetup, setupHostsConfig } from './setup'
+import { isCofferSetup, setupHostsConfig } from '../setup'
 import { dbRestAPI, webServer } from '../infrastructure/servers'
 
 const platform = process.platform
