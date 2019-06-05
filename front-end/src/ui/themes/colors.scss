@@ -1,0 +1,8 @@
+
+$primary-color: #343A40;
+$white-color: #f6f8fa;
+
+:export {
+    #{'primaryColor'}: $primary-color;
+    #{'whiteColor'}: $white-color;
+}

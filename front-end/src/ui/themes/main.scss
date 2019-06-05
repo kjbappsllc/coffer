@@ -1,0 +1,147 @@
+@import "./colors.scss";
+
+//// GLOBAL ////
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 24px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+html, body, #root {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+    background-color: #efeff5;
+}
+
+//// THEMES ////
+
+// CARD
+.card {
+    border-radius: 5px;
+    border: 1px solid #d8dee2;
+    box-shadow: 3px 5px 15px rgba(27, 31, 35, .075);
+    overflow: hidden;
+}
+
+.card-no-shadow {
+    @extend .card;
+    box-shadow: none;
+}
+
+// INPUT
+.input {
+    box-shadow: inset 0 1px 2px rgba(27,31,35,.075);
+    border: 1px solid #d1d5da;
+    outline: none;
+    padding: 6px 8px;
+    min-height: 36px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+::placeholder {
+    opacity: 0.2;
+    color: rgb(27,31,35);
+}
+
+// BUTTON
+.btn {
+    border-radius: 5px;
+    min-height: 40px;
+    outline: none;
+    border: 0px solid white;
+    background-color: #242939;
+    color: white;
+    transition-duration: 0.3s;
+}
+
+.btn:hover {
+    background-color: white;
+    border: 1px solid #242939;
+    color: #242939
+}
+
+// NAVIGATION
+.nav-row-active {
+    .link {
+        color: white
+    }
+    .icon {
+        color: #536be2
+    }
+}
+
+.nav-row {
+    padding: 9px 20px;
+    cursor: pointer;
+    height: 44px;
+    width: 100%;
+    text-decoration: none;
+}
+
+.link {
+    color: #c0c4d1;
+    transition: 0.3s;
+}
+
+.icon {
+    color: #687393;
+    transition: 0.3s;
+}
+
+// TEXT
+h2 {
+    font-weight: 500;
+    color: #434349;
+    font-size: 24px;
+}
+
+// HR
+.hr {
+    width: 100%;
+    opacity: 0.1;
+    height: '0.1px'
+}
+
+// UTIL CLASSES
+
+.fill-parent {
+    width: 100%;
+    height: 100%;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-column {
+    @extend .flex;
+    flex-direction: column;
+}
+
+.column-center {
+    align-items: center;
+}
+
+.flex-row {
+    @extend .flex;
+    flex-direction: row;
+}
+
+.row-center {
+    justify-content: center;
+}
+
+.row-center-v {
+    align-items: center;
+}
