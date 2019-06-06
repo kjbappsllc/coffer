@@ -5,7 +5,7 @@
 # ###########################################################
 OSNAME=$(uname -s)
 
-if [[ OSNAME == "Darwin" ]]; then
+if [[ OSNAME = "Darwin" ]]; then
     curl -fsSL raw.githubusercontent.com/kjbappsllc/coffer/master/src/macos | cat
 else
     echo "Not supporting Windows OS at this time"
