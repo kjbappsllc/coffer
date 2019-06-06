@@ -7,7 +7,7 @@ OSNAME=$(uname -s)
 echo "${OSNAME}"
 
 if [[ ${OSNAME} = "Darwin" ]]; then
-    curl -fsSL raw.githubusercontent.com/kjbappsllc/coffer/master/src/macos/install.sh | cat
+    ruby -e $(curl -fsSL raw.githubusercontent.com/kjbappsllc/coffer/master/src/macos/install.sh | cat)
 else
     echo "Not supporting Windows OS at this time"
 fi
