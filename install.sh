@@ -4,7 +4,6 @@
 # Variables
 # ###########################################################
 OSNAME=$(uname -s)
-echo "${OSNAME}"
 
 if [[ ${OSNAME} = "Darwin" ]]; then
     echo "Setting up Coffer Mac"
