@@ -6,3 +6,4 @@
 OSNAME=$(uname -s)
 
 echo "${OSNAME}"
+echo "${pwd}"
