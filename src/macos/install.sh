@@ -62,3 +62,13 @@ if [[ $? != 0 ]]; then
 else
     text "Watchtower is installed"
 fi
+
+docker inspect kbutts314/coffer-ui > /dev/null 2>&1
+
+if [[ $? != 0 ]]; then
+    text "coffer-ui not installed"
+    text "Installing coffer-ui"
+    docker pull kbutts314/coffer-ui > /dev/null 2>&1 
+else
+    text "kbutts314/coffer-ui is installed"
+fi
