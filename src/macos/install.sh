@@ -60,5 +60,5 @@ if [[ $? != 0 ]]; then
     text "Installing Watchtower"
     docker pull v2tec/watchtower > /dev/null 2>&1 
 else
-    text "Watchtower installed"
+    text "Watchtower is installed"
 fi
