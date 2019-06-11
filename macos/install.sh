@@ -63,6 +63,16 @@ else
     text "Watchtower is installed"
 fi
 
+docker inspect mongodb:4.0.10 > /dev/null 2>&1
+
+if [[ $? != 0 ]]; then
+    text "Mongodb not installed"
+    text "Installing mongodb:4.0.10"
+    docker pull mongodb:4.0.10 > /dev/null 2>&1 
+else
+    text "mongodb:4.0.10 is installed"
+fi
+
 docker inspect kbutts314/coffer-ui > /dev/null 2>&1
 
 if [[ $? != 0 ]]; then
