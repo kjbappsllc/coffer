@@ -82,3 +82,13 @@ if [[ $? != 0 ]]; then
 else
     text "kbutts314/coffer-ui is installed"
 fi
+
+docker inspect kbutts314/coffer-db-service > /dev/null 2>&1
+
+if [[ $? != 0 ]]; then
+    text "coffer-db-service not installed"
+    text "Installing coffer-db-service"
+    docker pull kbutts314/coffer-db-service > /dev/null 2>&1 
+else
+    text "kbutts314/coffer-db-service is installed"
+fi
