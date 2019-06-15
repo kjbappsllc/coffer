@@ -30,29 +30,26 @@ else
     text "Docker is installed"
 fi
 
+text "Checking if docker daemon is running"
+
 command -v docker > /dev/null 2>&1
 
 if [[ $? != 0 ]]; then
-    text "Docker tools are not installed"
-    open -a "Docker"
-    echo "\nPress enter when you have followed all of the docker instructions"
-    read
-else
-    text "Docker tools are installed"
+    # On Mac OS this would be the terminal command to launch Docker
+    open /Applications/Docker.app
+    #Wait until Docker daemon is running and has completed initialisation
+    text "Waiting for Docker to launch..."
+    while true; do
+        docker stats --no-stream > /dev/null 2>&1
+        if [[ $? = 0 ]]; then
+            break
+        fi
+        # Docker takes a few seconds to initialize
+        sleep 1
+    done
 fi
 
-text "Checking docker installation"
-docker run hello-world > /dev/null 2>&1
-
-if [[ $? != 0 ]]; then
-    text "Docker was not installed correctly"
-    exit 1
-else
-    text "Docker installed succcessfully"
-    docker ps -a | awk '{ print $1,$2 }' | grep hello-world | awk '{print $1 }' | xargs -I {} docker rm {} > /dev/null 2>&1
-    docker image rm hello-world > /dev/null 2>&1
-fi
-
+text "Docker is running"
 text "Installing necessary images"
 
 docker inspect v2tec/watchtower > /dev/null 2>&1
@@ -60,7 +57,7 @@ docker inspect v2tec/watchtower > /dev/null 2>&1
 if [[ $? != 0 ]]; then
     text "Watchtower not installed"
     text "Installing Watchtower"
-    docker pull v2tec/watchtower > /dev/null 2>&1 
+    docker pull v2tec/watchtower 
 else
     text "Watchtower is installed"
 fi
@@ -70,7 +67,7 @@ docker inspect mongo:4.0.10 > /dev/null 2>&1
 if [[ $? != 0 ]]; then
     text "Mongodb not installed"
     text "Installing mongo:4.0.10"
-    docker pull mongo:4.0.10 > /dev/null 2>&1 
+    docker pull mongo:4.0.10
 else
     text "mongo:4.0.10 is installed"
 fi
@@ -80,7 +77,7 @@ docker inspect kbutts314/coffer-ui > /dev/null 2>&1
 if [[ $? != 0 ]]; then
     text "coffer-ui not installed"
     text "Installing coffer-ui"
-    docker pull kbutts314/coffer-ui > /dev/null 2>&1 
+    docker pull kbutts314/coffer-ui
 else
     text "kbutts314/coffer-ui is installed"
 fi
@@ -90,7 +87,7 @@ docker inspect kbutts314/coffer-db-service > /dev/null 2>&1
 if [[ $? != 0 ]]; then
     text "coffer-db-service not installed"
     text "Installing coffer-db-service"
-    docker pull kbutts314/coffer-db-service > /dev/null 2>&1 
+    docker pull kbutts314/coffer-db-service
 else
     text "kbutts314/coffer-db-service is installed"
 fi
