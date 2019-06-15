@@ -68,7 +68,7 @@ docker inspect mongodb:4.0.10 > /dev/null 2>&1
 if [[ $? != 0 ]]; then
     text "Mongodb not installed"
     text "Installing mongodb:4.0.10"
-    docker pull mongodb:4.0.10 > /dev/null 2>&1 
+    docker pull mongo:4.0.10 > /dev/null 2>&1 
 else
     text "mongodb:4.0.10 is installed"
 fi
