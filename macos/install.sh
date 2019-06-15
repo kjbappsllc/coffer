@@ -35,6 +35,8 @@ command -v docker > /dev/null 2>&1
 if [[ $? != 0 ]]; then
     text "Docker tools are not installed"
     open -a "Docker"
+    echo "\nPress enter when you have followed all of the docker instructions"
+    read
 else
     text "Docker tools are installed"
 fi
